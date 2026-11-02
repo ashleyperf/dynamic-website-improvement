@@ -1,0 +1,8 @@
+﻿Tarea,Responsable,Inicio,Vencimiento,Estado,Dependencia
+Investigación,Diseñador,,,Pendiente,Brief aprobado
+Concepto,Diseñador,,,Pendiente,Investigación
+Producción,Diseñador,,,Pendiente,Concepto
+Presentación,Diseñador,,,Pendiente,Piezas listas
+Revisión,Cliente,,,Pendiente,Presentación
+Ajustes,Diseñador,,,Pendiente,Feedback consolidado
+Entrega,Diseñador,,,Pendiente,Aprobación escrita y saldo

@@ -1,0 +1,3541 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Freelance Studio Kit · Lector interactivo</title>
+    <meta
+      name="description"
+      content="Los siete módulos completos de Freelance Studio Kit: clientes, propuestas, producción, entrega y finanzas con herramientas y plantillas editables."
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --violet: #5b3fdb;
+        --lime: #d8f43e;
+        --pink: #f57fb8;
+        --orange: #f3652b;
+        --turq: #52c7bc;
+        --blue: #5576e8;
+        --yellow: #f6d65b;
+        --cream: #f4f1e7;
+        --navy: #2a2c4d;
+        --white: #ffffff;
+        --red: #e0213a;
+        --sans: Poppins, system-ui, sans-serif;
+        --logo: Fredoka, Poppins, sans-serif;
+        --c: var(--violet);
+      }
+      * {
+        box-sizing: border-box;
+        overflow-wrap: break-word;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--cream);
+        color: var(--navy);
+        font: 400 16px/1.6 var(--sans);
+        overflow-x: hidden;
+        background-image:
+          linear-gradient(rgba(42, 44, 77, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(42, 44, 77, 0.06) 1px, transparent 1px);
+        background-size: 36px 36px;
+      }
+      h1,
+      h2,
+      h3 {
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 0 0 0.4em;
+        letter-spacing: -0.01em;
+      }
+      h2 {
+        font-size: clamp(24px, 4.4vw, 36px);
+      }
+      h3 {
+        font-size: 18px;
+      }
+      p {
+        margin: 0 0 0.8em;
+      }
+      .wrap {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 18px;
+      }
+      .note {
+        font-size: 14px;
+        margin: 6px 0 0;
+      }
+      .lbl {
+        font-weight: 700;
+        font-size: 14px;
+        margin: 0 0 6px;
+      }
+      .kick {
+        font: 700 12px var(--sans);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin: 0 0 4px;
+      }
+      .sub {
+        font: 800 13px var(--sans);
+        background: var(--navy);
+        color: var(--cream);
+        display: inline-block;
+        border-radius: 99px;
+        padding: 3px 12px;
+        margin: 0 0 10px;
+      }
+
+      /* portada */
+      .cover {
+        background: var(--navy);
+        color: var(--cream);
+        position: relative;
+        overflow: hidden;
+        padding: 48px 0 0;
+        min-height: 600px;
+        background-image:
+          linear-gradient(rgba(244, 241, 231, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(244, 241, 231, 0.08) 1px, transparent 1px);
+        background-size: 36px 36px;
+      }
+      .cover .stk {
+        position: absolute;
+      }
+      .cover .kit {
+        font: 800 clamp(44px, 9vw, 84px)/1 var(--sans);
+        letter-spacing: -0.02em;
+        margin: 0;
+        text-transform: uppercase;
+      }
+      .cover .freelance {
+        display: block;
+        margin-top: 0;
+      }
+      .cover .studio {
+        display: inline-block;
+        background: var(--violet);
+        color: #fff;
+        font: 700 40px var(--logo);
+        padding: 2px 18px 8px;
+        border-radius: 999px;
+        border: 2.5px solid var(--cream);
+        transform: rotate(-3deg);
+        margin: -4px 0 4px;
+        box-shadow: 5px 5px 0 var(--lime);
+      }
+      .cover .sub2 {
+        font-size: 17px;
+        max-width: 480px;
+        margin: 14px 0 0;
+      }
+      .cover .auth {
+        font: 800 clamp(24px, 4vw, 34px)/1.1 var(--sans);
+        margin-top: 22px;
+      }
+      .cover .auth span {
+        color: var(--lime);
+      }
+      .cover .links {
+        margin-top: 14px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .cover .links a {
+        color: var(--navy);
+        background: var(--lime);
+        border-radius: 99px;
+        padding: 7px 14px;
+        font: 700 14px var(--sans);
+        text-decoration: none;
+        border: 2px solid var(--cream);
+      }
+      .cover .band {
+        margin-top: 44px;
+        background: var(--lime);
+        color: var(--navy);
+        font: 800 14px var(--sans);
+        text-transform: uppercase;
+        white-space: nowrap;
+        overflow: hidden;
+        border-top: 2.5px solid var(--cream);
+        padding: 9px 0;
+      }
+      .cover .band span {
+        margin: 0 14px;
+      }
+      @media (max-width: 600px) {
+        .cover .stk.hide-m {
+          display: none;
+        }
+      }
+
+      /* índice de carpetas */
+      .idx {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin-top: 6px;
+      }
+      .idx a {
+        position: relative;
+        text-decoration: none;
+        color: var(--t, var(--navy));
+        background: var(--c);
+        border: 2.5px solid var(--navy);
+        border-radius: 14px 22px 22px 22px;
+        padding: 22px 14px 14px;
+        min-height: 130px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 5px 5px 0 var(--navy);
+        margin-top: 14px;
+        transition: transform 0.2s;
+      }
+      .idx a::before {
+        content: '';
+        position: absolute;
+        left: -2.5px;
+        top: -20px;
+        width: 56%;
+        height: 22px;
+        background: var(--c);
+        border: 2.5px solid var(--navy);
+        border-bottom: 0;
+        border-radius: 12px 14px 0 0;
+      }
+      .idx a:hover {
+        transform: translate(-2px, -3px);
+      }
+      .idx .n {
+        font: 800 28px var(--sans);
+      }
+      .idx .t {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 1.25;
+      }
+      .idx .p {
+        font-size: 12px;
+        font-weight: 600;
+      }
+      @media (max-width: 760px) {
+        .idx {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      /* carpeta */
+      .folder {
+        padding: 56px 0 6px;
+        scroll-margin-top: 12px;
+      }
+      .fhead {
+        color: var(--t, var(--navy));
+        background: var(--c);
+        border: 2.5px solid var(--navy);
+        border-radius: 26px 26px 26px 6px;
+        padding: 20px 22px;
+        box-shadow: 6px 6px 0 var(--navy);
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        margin-bottom: 18px;
+        position: relative;
+      }
+      .fhead .num {
+        width: 72px;
+        height: 72px;
+        flex: none;
+        border-radius: 50%;
+        background: var(--navy);
+        color: var(--cream);
+        display: grid;
+        place-items: center;
+        font: 800 26px var(--sans);
+      }
+      .fhead h2 {
+        margin: 0;
+      }
+      .fhead .pg {
+        font: 700 13px var(--sans);
+        margin: 4px 0 0;
+      }
+      .toc2 {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 0 0 16px;
+      }
+      .toc2 a {
+        font: 700 13px var(--sans);
+        color: var(--navy);
+        background: var(--white);
+        border: 2px solid var(--navy);
+        border-radius: 99px;
+        padding: 5px 12px;
+        text-decoration: none;
+      }
+      .toc2 a:hover {
+        background: var(--c);
+      }
+
+      /* secciones */
+      .sec {
+        background: color-mix(in srgb, var(--c, #5b3fdb) 16%, #ffffff);
+        border: 2.5px solid var(--navy);
+        border-radius: 24px;
+        padding: 22px;
+        margin: 0 0 18px;
+        box-shadow: 4px 4px 0 var(--navy);
+        scroll-margin-top: 12px;
+      }
+      .sec h3 {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .sec h3 .x {
+        background: var(--c);
+        color: var(--t, var(--navy));
+        border: 2px solid var(--navy);
+        border-radius: 10px;
+        padding: 1px 9px;
+        font-size: 15px;
+      }
+      .sec .what {
+        font-size: 15px;
+        margin: 0 0 10px;
+      }
+      .sec .how {
+        background: var(--cream);
+        border-radius: 16px;
+        padding: 12px 14px;
+        margin: 10px 0;
+        font-size: 15px;
+      }
+      .sec .ex {
+        border: 2px dashed var(--navy);
+        border-radius: 16px;
+        padding: 12px 14px;
+        margin-top: 10px;
+        font-size: 15px;
+      }
+      .sec .do {
+        font-weight: 700;
+        margin-top: 10px;
+      }
+      .sec .do::before {
+        content: '→ ';
+        color: var(--orange);
+      }
+      .tipbox {
+        background: var(--navy);
+        color: var(--cream);
+        border-radius: 20px;
+        padding: 14px 16px;
+        margin-top: 12px;
+      }
+      .tipbox h4 {
+        margin: 0 0 4px;
+        color: var(--yellow);
+        font-size: 15px;
+        text-transform: uppercase;
+      }
+      .alert {
+        background: var(--red);
+        color: #fff;
+        border: 2.5px solid var(--navy);
+        border-radius: 20px;
+        padding: 16px 18px;
+        margin: 12px 0;
+        box-shadow: 4px 4px 0 var(--navy);
+      }
+      .alert h4 {
+        margin: 0 0 4px;
+        font-size: 17px;
+      }
+      .grid2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .grid3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 12px;
+      }
+      .grid4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+      @media (max-width: 640px) {
+        .grid2,
+        .grid3,
+        .grid4 {
+          grid-template-columns: 1fr !important;
+        }
+      }
+      .box {
+        border: 2px solid var(--navy);
+        border-radius: 18px;
+        padding: 12px 14px;
+        background: #fff;
+      }
+      .box b {
+        display: block;
+        margin-bottom: 2px;
+      }
+      .box:nth-child(4n + 1) {
+        background: #ffe3ee;
+      }
+      .box:nth-child(4n + 2) {
+        background: #fff0b3;
+      }
+      .box:nth-child(4n + 3) {
+        background: #d6f6f2;
+      }
+      .box:nth-child(4n) {
+        background: #ede8ff;
+      }
+      .step {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        margin: 8px 0;
+      }
+      .step i {
+        font-style: normal;
+        width: 30px;
+        height: 30px;
+        flex: none;
+        border-radius: 50%;
+        background: var(--c);
+        border: 2px solid var(--navy);
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        font-size: 13px;
+      }
+      .arr {
+        font-size: 22px;
+        font-weight: 800;
+        text-align: center;
+        color: var(--navy);
+        align-self: center;
+      }
+      .pill {
+        display: inline-block;
+        border: 2px solid var(--navy);
+        border-radius: 99px;
+        padding: 3px 11px;
+        font-size: 13px;
+        font-weight: 700;
+        background: #fff;
+        margin: 3px 3px 3px 0;
+      }
+
+      /* inputs */
+      input,
+      select,
+      textarea {
+        width: 100%;
+        font: 500 15px var(--sans);
+        padding: 9px 12px;
+        border: 2px solid var(--navy);
+        border-radius: 14px;
+        background: #fff;
+        color: var(--navy);
+      }
+      textarea {
+        min-height: 58px;
+        resize: vertical;
+      }
+      label {
+        display: block;
+        font-weight: 700;
+        font-size: 14px;
+        margin: 9px 0 4px;
+      }
+      .btn {
+        font: 700 14px var(--sans);
+        background: var(--violet);
+        color: #fff;
+        border: 2px solid var(--navy);
+        border-radius: 99px;
+        padding: 9px 16px;
+        cursor: pointer;
+        margin: 8px 6px 0 0;
+        box-shadow: 3px 3px 0 var(--navy);
+      }
+      .btn.lime {
+        background: var(--lime);
+        color: var(--navy);
+      }
+      .btn.or {
+        background: var(--orange);
+        color: var(--navy);
+      }
+      .btn.dk {
+        background: var(--navy);
+      }
+      button:focus-visible,
+      input:focus-visible,
+      select:focus-visible,
+      textarea:focus-visible,
+      a:focus-visible {
+        outline: 3px solid var(--yellow);
+        outline-offset: 3px;
+      }
+      .big {
+        font: 800 34px/1.05 var(--sans);
+        color: var(--navy);
+      }
+      .bar {
+        height: 14px;
+        border: 2px solid var(--navy);
+        border-radius: 99px;
+        background: #fff;
+        overflow: hidden;
+        margin-top: 10px;
+      }
+      .bar div {
+        height: 100%;
+        width: 0;
+        background: var(--navy);
+        transition: width 0.4s;
+      }
+      .res {
+        background: var(--cream);
+        border: 2px solid var(--navy);
+        border-radius: 16px;
+        padding: 10px 12px;
+        margin-top: 10px;
+        font-weight: 700;
+      }
+      table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        font-size: 14px;
+        background: #fff;
+        border: 2px solid var(--navy);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      td,
+      th {
+        padding: 8px 10px;
+        border-bottom: 1.5px solid #d8d8e6;
+        text-align: left;
+        vertical-align: middle;
+      }
+      th {
+        background: var(--navy);
+        color: var(--cream);
+      }
+      tr:last-child td {
+        border-bottom: 0;
+      }
+      td input {
+        padding: 5px 7px;
+        width: 90px;
+        border-radius: 10px;
+      }
+
+      /* 9 etapas */
+      .flow9 {
+        background: #fff;
+        border: 2px solid var(--navy);
+        border-radius: 20px;
+        padding: 8px;
+      }
+      .flow9 svg {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .flow9 text {
+        font-family: Poppins, sans-serif;
+      }
+      .grp {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+      .grp span {
+        border: 2px solid var(--navy);
+        border-radius: 12px;
+        padding: 6px 10px;
+        font-size: 13px;
+        font-weight: 600;
+        flex: 1;
+        min-width: 150px;
+      }
+
+      /* laptop negocio */
+      .biz {
+        position: relative;
+        min-height: 380px;
+      }
+      .biz svg.l {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+      .ar {
+        position: absolute;
+        background: #fff;
+        border: 2px solid var(--navy);
+        border-radius: 16px;
+        padding: 10px 12px;
+        width: 210px;
+        font-size: 13px;
+        box-shadow: 3px 3px 0 var(--navy);
+      }
+      .ar b {
+        display: block;
+        font-size: 14px;
+      }
+      .ar1 {
+        left: 0;
+        top: 0;
+      }
+      .ar2 {
+        right: 0;
+        top: 0;
+      }
+      .ar3 {
+        left: 0;
+        bottom: 0;
+      }
+      .ar4 {
+        right: 0;
+        bottom: 0;
+      }
+      .lap {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 230px;
+        background: var(--navy);
+        border-radius: 16px;
+        padding: 10px;
+        text-align: center;
+      }
+      @media (max-width: 640px) {
+        .biz {
+          min-height: 0;
+          display: grid;
+          gap: 8px;
+        }
+        .biz svg.l {
+          display: none;
+        }
+        .ar {
+          position: static;
+          width: auto;
+        }
+        .lap {
+          position: static;
+          transform: none;
+          width: 100%;
+        }
+      }
+
+      /* filtro banderas */
+      .flag {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        border: 2.5px solid var(--navy);
+        border-radius: 18px;
+        padding: 12px 14px;
+        margin: 8px 0;
+      }
+      .flag svg {
+        width: 44px;
+        height: 44px;
+        flex: none;
+      }
+      .flag b {
+        font-size: 16px;
+      }
+      .fg {
+        background: #d9f7df;
+      }
+      .fy {
+        background: #fff0b3;
+      }
+      .fr {
+        background: #ffd0d6;
+      }
+
+      /* tablero */
+      .kan {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+      }
+      .kan div {
+        background: var(--cream);
+        border: 2px solid var(--navy);
+        border-radius: 14px;
+        padding: 8px;
+      }
+      .kan h5 {
+        margin: 0 0 6px;
+        font-size: 13px;
+        text-transform: uppercase;
+      }
+      .card-p {
+        background: #fff;
+        border: 2px solid var(--navy);
+        border-radius: 12px;
+        padding: 8px;
+        font-size: 12px;
+        margin-bottom: 6px;
+      }
+      @media (max-width: 640px) {
+        .kan {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      /* timeline */
+      .tl {
+        position: relative;
+        padding-left: 26px;
+        margin: 10px 0;
+      }
+      .tl::before {
+        content: '';
+        position: absolute;
+        left: 9px;
+        top: 6px;
+        bottom: 6px;
+        border-left: 3px dashed var(--navy);
+      }
+      .tl .it {
+        position: relative;
+        margin: 0 0 10px;
+        background: #fff;
+        border: 2px solid var(--navy);
+        border-radius: 14px;
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+      .tl .it::before {
+        content: '';
+        position: absolute;
+        left: -23px;
+        top: 14px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--c);
+        border: 2px solid var(--navy);
+      }
+      .tl .it b {
+        display: inline-block;
+        min-width: 74px;
+      }
+
+      /* semáforo y gráficos */
+      .chart {
+        background: #fff;
+        border: 2px solid var(--navy);
+        border-radius: 18px;
+        padding: 12px;
+      }
+      .chart .cap {
+        font-weight: 800;
+        font-size: 15px;
+        margin: 0 0 8px;
+      }
+      .chart .cap small {
+        display: block;
+        font-weight: 500;
+        font-size: 13px;
+      }
+      .bars {
+        display: flex;
+        align-items: flex-end;
+        gap: 14px;
+        height: 170px;
+        border-bottom: 2px solid var(--navy);
+        padding-top: 6px;
+      }
+      .bars > div {
+        flex: 1;
+        text-align: center;
+        font-size: 13px;
+        font-weight: 700;
+      }
+      .bars .b {
+        width: 100%;
+        border: 2px solid var(--navy);
+        border-radius: 12px 12px 0 0;
+        border-bottom: 0;
+      }
+      .leg {
+        font-size: 13px;
+        margin-top: 6px;
+      }
+
+      /* pkg */
+      .pkg {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+      .pkg .c {
+        border: 2px solid var(--navy);
+        border-radius: 18px;
+        padding: 12px;
+        background: #fff;
+      }
+      .pkg .c.hot {
+        background: var(--yellow);
+      }
+      .pkg .price {
+        font: 800 24px var(--sans);
+        color: var(--navy);
+      }
+      .pkg ul {
+        margin: 6px 0 0;
+        padding-left: 18px;
+        font-size: 14px;
+      }
+      @media (max-width: 700px) {
+        .pkg {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* plantillas */
+      .tpls {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .tpl {
+        background: #fff;
+        border: 2px solid var(--navy);
+        border-radius: 18px;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .tpl h3 {
+        font-size: 16px;
+        margin: 0;
+      }
+      .tpl p {
+        font-size: 14px;
+        margin: 0;
+      }
+      .tpl .btn {
+        margin-top: auto;
+        align-self: flex-start;
+      }
+      @media (max-width: 640px) {
+        .tpls {
+          grid-template-columns: 1fr;
+        }
+      }
+      #dlMsg,
+      #briefMsg,
+      #qMsg {
+        min-height: 22px;
+        font-size: 14px;
+        font-weight: 600;
+        margin-top: 8px;
+      }
+
+      /* indicador de carpeta actual */
+      .here {
+        position: fixed;
+        right: 12px;
+        bottom: 12px;
+        z-index: 9;
+        background: var(--navy);
+        color: var(--cream);
+        border-radius: 99px;
+        padding: 8px 14px;
+        font: 700 13px var(--sans);
+        box-shadow: 3px 3px 0 var(--lime);
+        max-width: 70vw;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+        .trk,
+        .chevron {
+          animation: none !important;
+        }
+      }
+      .trk {
+        display: inline-block;
+        white-space: nowrap;
+        animation: marq 24s linear infinite;
+      }
+      @keyframes marq {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      @keyframes pop {
+        from {
+          opacity: 0;
+          transform: translateY(8px) scale(0.96);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .chev {
+        display: grid;
+        gap: 0;
+        margin-top: 8px;
+      }
+      .chevron {
+        padding: 16px 24px 16px 22px;
+        font-weight: 700;
+        font-size: 14px;
+        color: var(--navy);
+        text-align: center;
+        animation: pop 0.6s both;
+        border: 2px solid var(--navy);
+        min-height: 96px;
+      }
+      .chevron.c1 {
+        background: #ffe3ee;
+        clip-path: polygon(0 0, 88% 0, 100% 50%, 88% 100%, 0 100%, 8% 50%);
+      }
+      .chevron.c2 {
+        background: #fff0b3;
+        clip-path: polygon(0 0, 88% 0, 100% 50%, 88% 100%, 0 100%, 8% 50%);
+        animation-delay: 0.15s;
+      }
+      .chevron.c3 {
+        background: #d6f6f2;
+        clip-path: polygon(0 0, 88% 0, 100% 50%, 88% 100%, 0 100%, 8% 50%);
+        animation-delay: 0.3s;
+      }
+      .chevron.c4 {
+        background: #ede8ff;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 8% 50%);
+        animation-delay: 0.45s;
+      }
+      #toast {
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        bottom: 70px;
+        max-width: 560px;
+        margin: auto;
+        background: var(--navy);
+        color: var(--cream);
+        border-radius: 18px;
+        padding: 12px 16px;
+        font-weight: 600;
+        font-size: 14px;
+        box-shadow: 4px 4px 0 var(--lime);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(10px);
+        transition:
+          opacity 0.25s,
+          transform 0.25s;
+        z-index: 20;
+      }
+      #toast.on {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+      }
+      #toast a {
+        color: var(--lime);
+        font-weight: 800;
+      }
+      .reveal {
+        margin: 12px 0;
+      }
+      .rvb {
+        font: 700 14px var(--sans);
+        background: var(--lime);
+        color: var(--navy);
+        border: 2px solid var(--navy);
+        border-radius: 14px;
+        padding: 10px 14px;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+      }
+      .rvp {
+        background: #fff;
+        border: 2px dashed var(--navy);
+        border-radius: 14px;
+        padding: 10px 14px;
+        margin: 8px 0 0;
+      }
+      footer {
+        background: var(--navy);
+        color: var(--cream);
+        padding: 36px 0 40px;
+        margin-top: 50px;
+        text-align: center;
+      }
+    </style>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/reader.css" />
+    <noscript
+      ><style>
+        .folder {
+          display: block !important;
+        }
+        .save-banner {
+          display: none;
+        }
+      </style></noscript
+    >
+  </head>
+  <body>
+    <a class="skip-link" href="#reader-content">Saltar al contenido</a>
+    <header class="reader-header">
+      <a href="#" class="reader-brand"
+        >✳ <span>freelance <small>STUDIO KIT</small></span></a
+      ><a href="#indice">Ver las siete carpetas ↗</a
+      ><button id="print-kit" type="button">Imprimir / guardar PDF</button>
+    </header>
+    <nav class="chapter-nav" aria-label="Módulos del ebook">
+      <a href="#f1" data-chapter="f1"><span>01</span>Empieza aquí</a
+      ><a href="#f2" data-chapter="f2"><span>02</span>Bases y clientes</a
+      ><a href="#f3" data-chapter="f3"><span>03</span>Propuestas y acuerdos</a
+      ><a href="#f4" data-chapter="f4"><span>04</span>Producción creativa</a
+      ><a href="#f5" data-chapter="f5"><span>05</span>Entrega y cierre</a
+      ><a href="#f6" data-chapter="f6"><span>06</span>Finanzas freelance</a
+      ><a href="#f7" data-chapter="f7"><span>07</span>Ponlo en práctica</a>
+    </nav>
+    <div class="reader-intro">
+      <span>APRENDE A TU RITMO · PONLO EN PRÁCTICA</span>
+      <p>Lee la idea, mira el ejemplo y pruébalo con tu estudio.</p>
+    </div>
+
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <symbol id="f-g" viewBox="0 0 48 48">
+          <circle
+            cx="24"
+            cy="24"
+            r="22"
+            fill="#1F7A4D"
+            stroke="#2A2C4D"
+            stroke-width="2"
+          />
+          <circle cx="17" cy="20" r="2.5" fill="#fff" />
+          <circle cx="31" cy="20" r="2.5" fill="#fff" />
+          <path
+            d="M15 31q9 7 18 0"
+            stroke="#fff"
+            stroke-width="3"
+            fill="none"
+            stroke-linecap="round"
+          />
+        </symbol>
+        <symbol id="f-y" viewBox="0 0 48 48">
+          <circle
+            cx="24"
+            cy="24"
+            r="22"
+            fill="#F6D65B"
+            stroke="#2A2C4D"
+            stroke-width="2"
+          />
+          <circle cx="17" cy="20" r="2.5" fill="#2A2C4D" />
+          <circle cx="31" cy="20" r="2.5" fill="#2A2C4D" />
+          <path
+            d="M16 32h16"
+            stroke="#2A2C4D"
+            stroke-width="3"
+            stroke-linecap="round"
+          />
+        </symbol>
+        <symbol id="f-r" viewBox="0 0 48 48">
+          <circle
+            cx="24"
+            cy="24"
+            r="22"
+            fill="#E0213A"
+            stroke="#2A2C4D"
+            stroke-width="2"
+          />
+          <circle cx="17" cy="20" r="2.5" fill="#fff" />
+          <circle cx="31" cy="20" r="2.5" fill="#fff" />
+          <path
+            d="M15 36q9-7 18 0"
+            stroke="#fff"
+            stroke-width="3"
+            fill="none"
+            stroke-linecap="round"
+          />
+        </symbol>
+      </defs>
+    </svg>
+
+    <header class="cover">
+      <svg
+        class="stk"
+        style="right: -24px; top: 30px; width: 190px; height: 190px"
+        viewBox="0 0 200 200"
+        aria-hidden="true"
+      >
+        <circle
+          cx="100"
+          cy="100"
+          r="96"
+          fill="#5B3FDB"
+          stroke="#F4F1E7"
+          stroke-width="3"
+        />
+        <path
+          id="arcT"
+          d="M100,100 m-70,0 a70,70 0 1,1 140,0 a70,70 0 1,1 -140,0"
+          fill="none"
+        />
+        <text
+          font-family="Poppins"
+          font-weight="700"
+          font-size="12.5"
+          fill="#F4F1E7"
+          letter-spacing="2"
+        >
+          <textPath href="#arcT">ASHLEY RODRÍGUEZ • EBOOK • 2026 •</textPath>
+        </text>
+        <text
+          x="100"
+          y="124"
+          text-anchor="middle"
+          font-family="Fredoka"
+          font-weight="700"
+          font-size="84"
+          fill="#F4F1E7"
+        >
+          a
+        </text>
+      </svg>
+      <svg
+        class="stk hide-m"
+        style="right: 160px; top: 12px; width: 84px; height: 84px"
+        viewBox="0 0 100 100"
+        aria-hidden="true"
+      >
+        <polygon
+          points="50,0 61,14 79,6 82,25 100,27 93,44 100,50 93,56 100,73 82,75 79,94 61,86 50,100 39,86 21,94 18,75 0,73 7,56 0,50 7,44 0,27 18,25 21,6 39,14"
+          fill="#F3652B"
+          stroke="#F4F1E7"
+          stroke-width="3"
+        />
+      </svg>
+      <svg
+        class="stk hide-m"
+        style="right: 14px; top: 250px; width: 110px; height: 110px"
+        viewBox="0 0 120 120"
+        aria-hidden="true"
+      >
+        <polygon
+          points="60,4 74,20 96,12 100,34 120,38 111,58 120,60 111,74 120,88 100,92 96,112 74,104 60,120 46,104 24,112 20,92 0,88 9,74 0,60 9,58 0,38 20,34 24,12 46,20"
+          fill="#D8F43E"
+          stroke="#F4F1E7"
+          stroke-width="3"
+        />
+      </svg>
+      <svg
+        class="stk hide-m"
+        style="left: -8px; top: 330px; width: 150px; height: 70px"
+        viewBox="0 0 150 70"
+        aria-hidden="true"
+      >
+        <ellipse
+          cx="75"
+          cy="35"
+          rx="72"
+          ry="32"
+          fill="#D8F43E"
+          stroke="#F4F1E7"
+          stroke-width="3"
+        />
+        <text
+          x="75"
+          y="32"
+          text-anchor="middle"
+          font-family="Poppins"
+          font-weight="800"
+          font-size="14"
+          fill="#2A2C4D"
+        >
+          OPEN TO
+        </text>
+        <text
+          x="75"
+          y="50"
+          text-anchor="middle"
+          font-family="Poppins"
+          font-weight="800"
+          font-size="14"
+          fill="#2A2C4D"
+        >
+          ✱ WORK ✱
+        </text>
+      </svg>
+      <div class="wrap" style="position: relative">
+        <span class="sub" style="background: var(--lime); color: var(--navy)"
+          >ebook práctico · 35 páginas</span
+        >
+        <h1 class="kit">
+          <span class="freelance">FREELANCE</span
+          ><span style="display: block">STUDIO KIT</span>
+        </h1>
+        <span class="studio" style="margin-top: 6px">para tu estudio</span>
+        <p class="sub2">
+          Tu sistema para organizar clientes, proyectos y procesos creativos,
+          paso a paso.
+        </p>
+        <p class="auth">Ashley <span>Rodríguez</span></p>
+        <div class="links">
+          <a
+            href="https://instagram.com/ashleyperf"
+            target="_blank"
+            rel="noopener"
+            >Instagram · @ashleyperf</a
+          >
+          <a
+            href="https://tiktok.com/@ashleyperf"
+            target="_blank"
+            rel="noopener"
+            >TikTok · @ashleyperf</a
+          >
+        </div>
+      </div>
+      <div class="band" aria-hidden="true">
+        <div class="trk">
+          <span>Freelance</span
+          >✱<span>Clientes</span>✱<span>Proyectos</span>✱<span>Plantillas</span>✱<span>Finanzas</span>✱<span>Práctica</span>✱<span>Freelance</span>✱<span>Clientes</span>✱<span>Proyectos</span>✱<span>Plantillas</span>✱
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap" id="reader-content">
+      <section style="padding-top: 50px" id="indice">
+        <p class="kick">contenido</p>
+        <h2>Siete carpetas, en orden</h2>
+        <p class="note" style="margin-bottom: 12px">
+          Cada carpeta tiene un número y un color. Dentro, las secciones se
+          numeran igual (1.1, 1.2…) para que sigas el orden.
+        </p>
+        <nav class="idx">
+          <a href="#f1" style="--c: #5b3fdb; --t: #ffffff"
+            ><span class="n">01</span><span class="t">Empieza aquí</span
+            ><span class="p">págs. 01–04</span></a
+          >
+          <a href="#f2" style="--c: #d8f43e"
+            ><span class="n">02</span><span class="t">Bases y clientes</span
+            ><span class="p">págs. 05–11</span></a
+          >
+          <a href="#f3" style="--c: #f57fb8"
+            ><span class="n">03</span
+            ><span class="t">Propuestas y acuerdos</span
+            ><span class="p">págs. 12–17</span></a
+          >
+          <a href="#f4" style="--c: #f3652b"
+            ><span class="n">04</span><span class="t">Producción creativa</span
+            ><span class="p">págs. 18–24</span></a
+          >
+          <a href="#f5" style="--c: #52c7bc"
+            ><span class="n">05</span><span class="t">Entrega y cierre</span
+            ><span class="p">págs. 25–28</span></a
+          >
+          <a href="#f6" style="--c: #5576e8; --t: #ffffff"
+            ><span class="n">06</span><span class="t">Finanzas freelance</span
+            ><span class="p">págs. 29–31</span></a
+          >
+          <a href="#f7" style="--c: #f6d65b"
+            ><span class="n">07</span><span class="t">Ponlo en práctica</span
+            ><span class="p">págs. 32–35</span></a
+          >
+        </nav>
+      </section>
+
+      <!-- ============ 01 · EMPIEZA AQUÍ ============ -->
+      <section class="folder" id="f1" style="--c: #5b3fdb; --t: #ffffff">
+        <div class="fhead">
+          <div class="num">01</div>
+          <div>
+            <h1>Empieza aquí</h1>
+            <p class="fpg">Páginas 01–04</p>
+          </div>
+        </div>
+        <nav class="toc2">
+          <a href="#s11">1.1 Bienvenida</a
+          ><a href="#s12">1.2 Primera decisión</a
+          ><a href="#s13">1.3 Mapa de trabajo</a>
+        </nav>
+
+        <div class="sec" id="s11">
+          <h3><span class="x">1.1</span>Bienvenida</h3>
+          <p class="what">
+            <b>Qué es:</b> este kit no es una fórmula mágica. Es un sistema para
+            quitar decisiones improvisadas.
+          </p>
+          <div class="how">
+            <b>Cómo funciona:</b> 1) lee cada sección · 2) mira el ejemplo · 3)
+            repite el modelo con tus datos · 4) guarda lo que aprendas · 5)
+            revisa tu sistema después de tres proyectos.
+          </div>
+          <div class="ex">
+            <b>Ejemplo ficticio:</b> una marca de cafetería (Brisa Café) pide
+            seis posts para Instagram. Los importes son didácticos, en soles.
+          </div>
+        </div>
+
+        <div class="sec" id="s12">
+          <h3><span class="x">1.2</span>Primera decisión</h3>
+          <p class="what">
+            Antes de todo, crea una carpeta en tu computadora llamada
+            <b>“Mi estudio freelance”</b>. Ahí guardas tu documentación base, tu
+            registro de clientes y las versiones de este kit.
+          </p>
+          <p class="do">Hazlo hoy: crea la carpeta.</p>
+        </div>
+
+        <div class="sec" id="s13">
+          <h3><span class="x">1.3</span>Mapa de trabajo: 9 etapas</h3>
+          <p class="what">
+            <b>Qué es:</b> el recorrido completo de un proyecto, desde la
+            primera consulta hasta el cierre.
+          </p>
+          <div class="flow9">
+            <svg
+              viewBox="0 0 900 340"
+              role="img"
+              aria-label="Nueve etapas en zigzag: contacto, brief, cotizar, acordar, planificar, diseñar, revisar, entregar y cerrar"
+            >
+              <path
+                d="M80 110 C120 110 130 230 170 230 S220 110 260 110 S310 230 350 230 S400 110 440 110 S490 230 530 230 S580 110 620 110 S670 230 710 230 S760 110 800 110"
+                fill="none"
+                stroke="#2A2C4D"
+                stroke-width="3"
+                stroke-dasharray="2 9"
+                stroke-linecap="round"
+              />
+              <g
+                font-size="15"
+                font-weight="700"
+                text-anchor="middle"
+                fill="#2A2C4D"
+              >
+                <circle
+                  cx="80"
+                  cy="110"
+                  r="28"
+                  fill="#5B3FDB"
+                  stroke="#2A2C4D"
+                  stroke-width="2.5"
+                />
+                <text x="80" y="116" fill="#fff">1</text>
+                <rect
+                  x="20"
+                  y="44"
+                  width="120"
+                  height="28"
+                  rx="14"
+                  fill="#fff"
+                  stroke="#2A2C4D"
+                  stroke-width="2"
+                />
+                <text x="80" y="63">Contacto</text>
+                <circle
+                  cx="170"
+                  cy="230"
+                  r="28"
+                  fill="#5B3FDB"
+                  stroke="#2A2C4D"
+                  stroke-width="2.5"
+                />
+                <text x="170" y="236" fill="#fff">2</text>
+                <rect
+                  x="110"
+                  y="272"
+                  width="120"
+                  height="28"
+                  rx="14"
+                  fill="#fff"
+                  stroke="#2A2C4D"
+                  stroke-width="2"
+                />
+                <text x="170" y="291">Brief</text>
+                <circle
+                  cx="260"
+                  cy="110"
+                  r="28"
+                  fill="#5B3FDB"
+                  stroke="#2A2C4D"
+                  stroke-width="2.5"
+                />
+                <text x="260" y="116" fill="#fff">3</text>
+                <rect
+                  x="200"
+                  y="44"
+                  width="120"
+                  height="28"
+                  rx="14"
+                  fill="#fff"
+                  stroke="#2A2C4D"
+                  stroke-width="2"
+                />
+                <text x="260" y="63">Cotizar</text>
+                <circle
+                  cx="350"
+                  cy="230"
+                  r="28"
+                  fill="#F3652B"
+                  stroke="#2A2C4D"
+                  stroke-width="2.5"
+                />
+                <text x="350" y="236">4</text>
+                <rect
+                  x="290"
+                  y="272"
+                  width="120"
+                  height="28"
+                  rx="14"
+                  fill="#fff"
+                  stroke="#2A2C4D"
+                  stroke-width="2"
+                />
+                <text x="350" y="291">Acordar</text>
+                <circle
+                  cx="440"
+                  cy="110"
+                  r="28"
+                  fill="#F3652B"
+                  stroke="#2A2C4D"
+                  stroke-width="2.5"
+                />
+                <text x="440" y="116">5</text>
+                <rect
+                  x="380"
+                  y="44"
+                  width="120"
+                  height="28"
+                  rx="14"
+                  fill="#fff"
+                  stroke="#2A2C4D"
+                  stroke-width="2"
+                />
+                <text x="440" y="63">Planificar</text>
+                <circle
+                  cx="530"
+                  cy="230"
+                  r="28"
+                  fill="#F3652B"
+                  stroke="#2A2C4D"
+                  stroke-width="2.5"
+                />
+                <text x="530" y="236">6</text>
+                <rect
+                  x="470"
+                  y="272"
+                  width="120"
+                  height="28"
+                  rx="14"
+                  fill="#fff"
+                  stroke="#2A2C4D"
+                  stroke-width="2"
+                />
+                <text x="530" y="291">Diseñar</text>
+                <circle
+                  cx="620"
+                  cy="110"
+                  r="28"
+                  fill="#F3652B"
+                  stroke="#2A2C4D"
+                  stroke-width="2.5"
+                />
+                <text x="620" y="116">7</text>
+                <rect
+                  x="560"
+                  y="44"
+                  width="120"
+                  height="28"
+                  rx="14"
+                  fill="#fff"
+                  stroke="#2A2C4D"
+                  stroke-width="2"
+                />
+                <text x="620" y="63">Revisar</text>
+                <circle
+                  cx="710"
+                  cy="230"
+                  r="28"
+                  fill="#52C7BC"
+                  stroke="#2A2C4D"
+                  stroke-width="2.5"
+                />
+                <text x="710" y="236">8</text>
+                <rect
+                  x="650"
+                  y="272"
+                  width="120"
+                  height="28"
+                  rx="14"
+                  fill="#fff"
+                  stroke="#2A2C4D"
+                  stroke-width="2"
+                />
+                <text x="710" y="291">Entregar</text>
+                <circle
+                  cx="800"
+                  cy="110"
+                  r="28"
+                  fill="#2A2C4D"
+                  stroke="#2A2C4D"
+                  stroke-width="2.5"
+                />
+                <text x="800" y="116" fill="#F4F1E7">9</text>
+                <rect
+                  x="740"
+                  y="44"
+                  width="120"
+                  height="28"
+                  rx="14"
+                  fill="#fff"
+                  stroke="#2A2C4D"
+                  stroke-width="2"
+                />
+                <text x="800" y="63">Cerrar</text>
+              </g>
+            </svg>
+          </div>
+          <div class="grp">
+            <span style="background: #ede8ff">Antes de producir: 1 a 5</span>
+            <span style="background: #ffe3ee">Durante: 6 a 7</span>
+            <span style="background: #d6f6f2">Después: 8 a 9</span>
+          </div>
+          <div class="reveal">
+            <button
+              class="rvb"
+              type="button"
+              aria-expanded="false"
+              onclick="rv(this)"
+            >
+              Piensa primero: ¿qué etapa crees que toma más días?
+            </button>
+            <p class="rvp" hidden>
+              Diseñar y revisar. Depende de cuántas piezas y rondas incluyas:
+              por eso el tiempo se calcula en la sección 4.1.
+            </p>
+          </div>
+          <div class="alert">
+            <h4>Regla de control</h4>
+            <p style="margin: 0">
+              No pases a la siguiente etapa sin su evidencia: brief, propuesta
+              aceptada, comprobante de anticipo, cronograma, aprobación escrita
+              o confirmación de entrega.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 02 · BASES Y CLIENTES ============ -->
+      <section class="folder" id="f2" style="--c: #d8f43e">
+        <div class="fhead">
+          <div class="num">02</div>
+          <div>
+            <h1>Bases y clientes</h1>
+            <p class="fpg">Páginas 05–11</p>
+          </div>
+        </div>
+        <nav class="toc2">
+          <a href="#s21">2.1 Negocio</a><a href="#s22">2.2 Servicios</a
+          ><a href="#s23">2.3 Archivos</a><a href="#s24">2.4 Primer contacto</a
+          ><a href="#s25">2.5 Filtro</a><a href="#s26">2.6 Brief</a
+          ><a href="#s27">2.7 Registro</a>
+        </nav>
+
+        <div class="sec" id="s21">
+          <h3><span class="x">2.1</span>Negocio freelance</h3>
+          <p class="what">
+            Tu estudio tiene cuatro áreas. Revisa cada una una vez por semana.
+          </p>
+          <div class="biz">
+            <svg
+              class="l"
+              viewBox="0 0 700 380"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <g
+                stroke="#2A2C4D"
+                stroke-width="2.5"
+                fill="none"
+                stroke-dasharray="2 7"
+                stroke-linecap="round"
+              >
+                <path d="M350 190 C280 190 260 100 220 80" />
+                <path d="M350 190 C420 190 440 100 480 80" />
+                <path d="M350 190 C280 190 260 290 220 300" />
+                <path d="M350 190 C420 190 440 290 480 300" />
+              </g>
+            </svg>
+            <div class="ar ar1">
+              <b>1 · Servicio</b>Qué problema resuelves y qué resultado
+              entregas.<br /><i>Ej.: 6 posts para Instagram.</i>
+            </div>
+            <div class="ar ar2">
+              <b>2 · Comercial</b>Consultas, propuestas y seguimiento.<br /><i
+                >Ej.: responder en 24 horas.</i
+              >
+            </div>
+            <div class="ar ar3">
+              <b>3 · Operaciones</b>Etapas, fechas, archivos y revisiones.<br /><i
+                >Ej.: cronograma en un tablero.</i
+              >
+            </div>
+            <div class="ar ar4">
+              <b>4 · Finanzas</b>Ingresos, costos, impuestos y margen.<br /><i
+                >Ej.: anticipo del 50 %.</i
+              >
+            </div>
+            <div class="lap">
+              <svg
+                viewBox="0 0 180 110"
+                width="100%"
+                role="img"
+                aria-label="Laptop"
+              >
+                <rect
+                  x="14"
+                  y="6"
+                  width="152"
+                  height="90"
+                  rx="8"
+                  fill="#F4F1E7"
+                />
+                <rect
+                  x="22"
+                  y="14"
+                  width="136"
+                  height="74"
+                  rx="4"
+                  fill="#5B3FDB"
+                />
+                <rect
+                  x="34"
+                  y="26"
+                  width="48"
+                  height="8"
+                  rx="3"
+                  fill="#D8F43E"
+                />
+                <rect x="34" y="42" width="110" height="5" rx="2" fill="#fff" />
+                <rect x="34" y="54" width="84" height="5" rx="2" fill="#fff" />
+                <rect
+                  x="34"
+                  y="66"
+                  width="36"
+                  height="12"
+                  rx="6"
+                  fill="#F3652B"
+                />
+                <rect
+                  x="0"
+                  y="98"
+                  width="180"
+                  height="8"
+                  rx="4"
+                  fill="#F57FB8"
+                />
+              </svg>
+              <div style="color: #f4f1e7; font-weight: 800; margin-top: 4px">
+                TU ESTUDIO
+              </div>
+            </div>
+          </div>
+          <div class="ex" style="margin-top: 14px">
+            <b>Ejercicio de 15 minutos — para qué sirve:</b> te obliga a decir a
+            quién le vendes y qué resultado le das. Esa frase la usas en tu
+            portafolio, en tu propuesta y para explicar por qué te eligieron.<br /><b
+              >Completa:</b
+            >
+            “Ayudo a [tipo de cliente] a [objetivo] mediante [servicio
+            concreto].”
+          </div>
+        </div>
+
+        <div class="sec" id="s22">
+          <h3><span class="x">2.2</span>Servicios y límites</h3>
+          <p class="what">
+            <b>Qué es:</b> un servicio con nombre, cantidad de piezas,
+            revisiones y exclusiones. “Diseño de redes” es abierto; “seis posts
+            estáticos” es medible.
+          </p>
+          <div class="grid3">
+            <div class="box" style="background: #d9f7df">
+              <b>Incluye</b>6 artes finales JPG/PNG · 2 rondas de ajustes
+            </div>
+            <div class="box" style="background: #fff0b3">
+              <b>Debe aportar el cliente</b>Textos aprobados · fotos · guía de
+              marca
+            </div>
+            <div class="box" style="background: #ffd0d6">
+              <b>Se cotiza aparte</b>Historias animadas · redacción · pauta
+            </div>
+          </div>
+          <div class="how">
+            <b>Ejemplo:</b> Brisa Café pide historias animadas además de los
+            seis posts. No se “agregan por ser parecidas”: son otro servicio,
+            con nuevo precio y plazo.
+          </div>
+          <p class="do">
+            Escribe cinco inclusiones y cinco exclusiones para dos de tus
+            servicios.
+          </p>
+        </div>
+
+        <div class="sec" id="s23">
+          <h3><span class="x">2.3</span>Organización de archivos</h3>
+          <p class="what">
+            <b>Qué es:</b> una estructura de carpetas que siempre sigue el mismo
+            orden, para encontrar cualquier archivo en segundos.
+          </p>
+          <details
+            open
+            style="
+              border: 2px solid var(--navy);
+              border-radius: 16px;
+              padding: 10px 14px;
+              background: var(--cream);
+            "
+          >
+            <summary style="cursor: pointer; font-weight: 800">
+              Mi estudio freelance / (ver carpetas)
+            </summary>
+            <p style="margin: 8px 0 0; font-size: 15px">
+              📁 00_ADMIN — contratos, propuestas, comprobantes<br />📁
+              01_CLIENTES — contactos y briefs<br />📁 02_PROYECTOS — una
+              carpeta por cliente<br />📁 03_RECURSOS — licencias, fuentes,
+              plantillas<br />📁 04_PORTAFOLIO — proyectos autorizados
+            </p>
+          </details>
+          <div class="grid2" style="margin-top: 12px">
+            <div class="box" style="background: #d9f7df">
+              <b>✔ Nombre correcto</b>Brisa_Post03_v02_2026-11-12.ai
+            </div>
+            <div class="box" style="background: #ffd0d6">
+              <b>✘ Nombre confuso</b>postfinal2_ahorasi.png
+            </div>
+          </div>
+          <p class="do" style="margin-top: 10px">
+            Reserva “FINAL” solo para archivos aprobados.
+          </p>
+        </div>
+
+        <div class="sec" id="s24">
+          <h3><span class="x">2.4</span>Primer contacto</h3>
+          <p class="what">
+            <b>Qué es:</b> la primera respuesta. Agradeces, preguntas y pides
+            información <b>antes</b> de prometer precio o fecha.
+          </p>
+          <div class="grid4" style="margin-bottom: 10px">
+            <div class="box"><b>1</b>Agradece</div>
+            <div class="box"><b>2</b>Pregunta</div>
+            <div class="box"><b>3</b>Pide insumos</div>
+            <div class="box"><b>4</b>Indica plazo</div>
+          </div>
+          <div class="grid2">
+            <div>
+              <label for="pn">Nombre del cliente</label
+              ><input id="pn" placeholder="Ej. Ana" />
+            </div>
+            <div>
+              <label for="ps">Servicio</label
+              ><input id="ps" placeholder="Ej. diseño de posts" />
+            </div>
+            <div>
+              <label for="pf">Fecha que necesitan</label
+              ><input id="pf" placeholder="Ej. 15 de noviembre" />
+            </div>
+            <div>
+              <label for="pt">Tu nombre</label
+              ><input id="pt" placeholder="Ej. Ashley" />
+            </div>
+          </div>
+          <label for="pe">Lo que necesitas para evaluar</label>
+          <input
+            id="pe"
+            value="el objetivo, las piezas, dónde se usarán y la fecha"
+          />
+          <p class="lbl" style="margin-top: 10px">Vista previa</p>
+          <div
+            class="res"
+            id="preview"
+            style="white-space: pre-wrap; font-weight: 500"
+          ></div>
+          <button class="btn" type="button" id="copyBtn">Copiar mensaje</button>
+          <p class="note" id="copyMsg" role="status"></p>
+          <div class="ex">
+            <b>Ejemplo (ficticio):</b> “Queremos promocionar nuestra carta en
+            Instagram. ¿Cuánto cuesta seis publicaciones y para cuándo
+            estarían?” → Respondes con preguntas, no con un monto.
+          </div>
+        </div>
+
+        <div class="sec" id="s25">
+          <h3><span class="x">2.5</span>Filtro de proyectos</h3>
+          <p class="what">
+            <b>Qué es:</b> una evaluación de 5 puntos para decidir si aceptas,
+            negocias o rechazas. Cada punto va del 1 (riesgo alto) al 3
+            (favorable).
+          </p>
+          <div class="grid3" style="margin-bottom: 8px">
+            <div class="box"><b>Objetivo</b>¿Sabes qué resultado quiere?</div>
+            <div class="box">
+              <b>Capacidad</b>¿Tienes estilo, herramientas y licencias?
+            </div>
+            <div class="box">
+              <b>Tiempo</b>¿El plazo alcanza para diseñar y revisar?
+            </div>
+            <div class="box">
+              <b>Presupuesto</b>¿Cubre tus costos y tu tiempo?
+            </div>
+            <div class="box">
+              <b>Colaboración</b>¿Alguien aprueba y entrega materiales?
+            </div>
+          </div>
+          <div class="grid2">
+            <div>
+              <label for="m0">Objetivo</label
+              ><select id="m0" class="mx">
+                <option value="">Elige</option>
+                <option value="1">1 · riesgo alto</option>
+                <option value="2">2 · medio</option>
+                <option value="3">3 · favorable</option>
+              </select>
+              <label for="m1">Capacidad</label
+              ><select id="m1" class="mx">
+                <option value="">Elige</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <label for="m2">Tiempo</label
+              ><select id="m2" class="mx">
+                <option value="">Elige</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <label for="m3">Presupuesto</label
+              ><select id="m3" class="mx">
+                <option value="">Elige</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <label for="m4">Colaboración</label
+              ><select id="m4" class="mx">
+                <option value="">Elige</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+            <div>
+              <p class="lbl">Tu puntaje</p>
+              <p class="big" id="mScore">—</p>
+              <div class="bar"><div id="mBar"></div></div>
+              <div class="res" id="mOut">Completa los cinco criterios.</div>
+            </div>
+          </div>
+          <div class="reveal">
+            <button
+              class="rvb"
+              type="button"
+              aria-expanded="false"
+              onclick="rv(this)"
+            >
+              Piensa primero: un cliente dice “lo necesito para mañana”. ¿Qué
+              puntaje le das a Tiempo?
+            </button>
+            <p class="rvp" hidden>
+              Un 1. El plazo no alcanza para diseñar y revisar con calidad.
+              Puedes proponer otra fecha o reducir entregables.
+            </p>
+          </div>
+          <div class="flag fg">
+            <svg><use href="#f-g" /></svg>
+            <div>
+              <b>13 a 15 · Bandera verde: acepta</b>Tienes lo necesario. Envía
+              la propuesta con alcance escrito.
+            </div>
+          </div>
+          <div class="flag fy">
+            <svg><use href="#f-y" /></svg>
+            <div>
+              <b>9 a 12 · Bandera amarilla: negocia</b>Cambia plazo, entregables
+              o precio antes de aceptar.
+            </div>
+          </div>
+          <div class="flag fr">
+            <svg><use href="#f-r" /></svg>
+            <div>
+              <b>5 a 8 · Bandera roja: rechaza o redefine</b>Di no con respeto o
+              propone una versión más pequeña.
+            </div>
+          </div>
+          <div class="alert" style="background: #e0213a">
+            <h4>Señales de alerta</h4>
+            <p style="margin: 0">
+              “Lo necesito para mañana”, “no tenemos contenido”, “haz una prueba
+              gratis”. No significan no: significan que hay que preguntar antes.
+            </p>
+          </div>
+        </div>
+
+        <div class="sec" id="s26">
+          <h3><span class="x">2.6</span>Brief para tu cliente</h3>
+          <p class="what">
+            <b>Qué es:</b> el formulario que el cliente llena para que sepas
+            exactamente qué necesita. Agrupado por objetivo, público, contenido,
+            entregables y condiciones.
+          </p>
+          <div class="grid2">
+            <div class="box">
+              <b>Objetivo</b>¿Cuál es el problema? ¿Qué debe hacer quien vea la
+              pieza?
+            </div>
+            <div class="box">
+              <b>Público</b>¿A quién va dirigida? ¿Dónde se publicará?
+            </div>
+            <div class="box">
+              <b>Contenido</b>¿Cuál es el mensaje principal? ¿Qué materiales
+              tienes?
+            </div>
+            <div class="box">
+              <b>Entregables y condiciones</b>¿Quién aprueba? ¿Qué fecha y
+              presupuesto manejan?
+            </div>
+          </div>
+          <div class="ex">
+            <b>Ejemplo respondido (ficticio):</b> “Nuestra carta nueva no se ve
+            en Instagram” · público: adultos jóvenes del barrio · mensaje: “Una
+            pausa con sabor” · materiales: logo y fotos · aprueba: la
+            administradora · fecha: segunda quincena de noviembre.
+          </div>
+          <p class="lbl" style="margin-top: 10px">Descarga y úsalo</p>
+          <button class="btn" type="button" onclick="brief('html')">
+            Documento editable (.html)
+          </button>
+          <button class="btn lime" type="button" onclick="copiarPreguntas()">
+            Copiar para Google Forms
+          </button>
+          <button class="btn or" type="button" onclick="brief('txt')">
+            Texto (.txt)
+          </button>
+          <p class="note" id="briefMsg" role="status"></p>
+          <div class="grid4" style="margin-top: 10px">
+            <div class="box"><b>1</b>Descarga</div>
+            <div class="box"><b>2</b>Ábrelo en Word</div>
+            <div class="box"><b>3</b>Envíalo</div>
+            <div class="box"><b>4</b>Revisa respuestas</div>
+          </div>
+          <div class="tipbox">
+            <h4>TIPS DE DISEÑADOR</h4>
+            <p style="margin: 0">
+              Si algo no queda claro, no adivines. Pide una reunión de 20
+              minutos, toma notas y confirma por escrito lo acordado.
+            </p>
+          </div>
+        </div>
+
+        <div class="sec" id="s27">
+          <h3><span class="x">2.7</span>Registro de contactos</h3>
+          <p class="what">
+            <b>Qué es:</b> una hoja donde cada consulta tiene un estado y una
+            próxima acción con fecha.
+          </p>
+          <div class="grid4" style="margin-bottom: 10px">
+            <div class="box" style="background: #ede8ff"><b>Nueva</b></div>
+            <div class="box" style="background: #fff0b3"><b>Pendiente</b></div>
+            <div class="box" style="background: #d6f6f2"><b>Calificada</b></div>
+            <div class="box" style="background: #d9f7df"><b>Ganada</b></div>
+          </div>
+          <table>
+            <tr>
+              <th>ID</th>
+              <th>Marca</th>
+              <th>Estado</th>
+              <th>Próxima acción</th>
+              <th>Fecha</th>
+            </tr>
+            <tr>
+              <td>C-026</td>
+              <td>Brisa Café (ficticio)</td>
+              <td>Calificada</td>
+              <td><b>Enviar propuesta</b></td>
+              <td><b>05/11/2026</b></td>
+            </tr>
+          </table>
+          <p class="note">
+            <b>Regla:</b> no crees un proyecto hasta que haya aceptación y
+            anticipo confirmado. Al aprobar, C-026 pasa a P-026.
+          </p>
+          <button
+            class="btn dk"
+            type="button"
+            onclick="
+              guardar(
+                'registro_contactos.csv',
+                'ID,Fecha,Marca,Canal,Servicio,Presupuesto,Plazo,Estado,Próxima acción,Seguimiento\nC-001,,,,,,,Nueva,,\n',
+              )
+            "
+          >
+            Descargar registro (.csv)
+          </button>
+          <p class="note">
+            <b>Ritual semanal:</b> revisa consultas sin respuesta y seguimientos
+            pendientes.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ 03 · PROPUESTAS Y ACUERDOS ============ -->
+      <section class="folder" id="f3" style="--c: #f57fb8">
+        <div class="fhead">
+          <div class="num">03</div>
+          <div>
+            <h1>Propuestas y acuerdos</h1>
+            <p class="fpg">Páginas 12–17</p>
+          </div>
+        </div>
+        <nav class="toc2">
+          <a href="#s31">3.1 Alcance</a><a href="#s32">3.2 Tarifas</a
+          ><a href="#s33">3.3 Cálculo</a><a href="#s34">3.4 Cotización</a
+          ><a href="#s35">3.5 Cambios</a><a href="#s36">3.6 Inicio</a
+          ><a href="#s37">3.7 Antes de cotizar</a>
+        </nav>
+
+        <div class="sec" id="s31">
+          <h3><span class="x">3.1</span>Alcance: lo que sí y lo que no</h3>
+          <p class="what">
+            <b>Qué es:</b> el perímetro del servicio antes de hablar de dinero.
+            Un tercero debe poder contar las piezas sin llamarte.
+          </p>
+          <div class="grid3">
+            <div class="box" style="background: #d9f7df">
+              <b>Incluye</b>Concepto gráfico · 6 posts 1080 × 1350 · 2 rondas ·
+              JPG/PNG
+            </div>
+            <div class="box" style="background: #fff0b3">
+              <b>Requiere del cliente</b>Contenido aprobado · fotos licenciadas
+            </div>
+            <div class="box" style="background: #ffd0d6">
+              <b>Excluye</b>Sesiones de foto · copywriting · motion · editables
+            </div>
+          </div>
+          <div class="how">
+            <b>Cuando piden algo nuevo:</b> describe la solicitud → estima horas
+            → define impacto en fecha y costo → envía anexo → espera aprobación
+            escrita.
+          </div>
+        </div>
+
+        <div class="sec" id="s32">
+          <h3><span class="x">3.2</span>Tarifas y paquetes</h3>
+          <p class="what">
+            <b>Qué es:</b> tres paquetes para empezar, más trabajos puntuales y
+            asesorías.
+          </p>
+          <div class="pkg">
+            <div class="c">
+              <b>Básico</b>
+              <div class="price">S/ 350</div>
+              <ul>
+                <li>3 piezas</li>
+                <li>1 ronda de ajustes</li>
+                <li>JPG</li>
+              </ul>
+            </div>
+            <div class="c hot">
+              <b>Intermedio</b>
+              <div class="price">S/ 1 280</div>
+              <ul>
+                <li>6 piezas</li>
+                <li>2 rondas</li>
+                <li>JPG y PNG</li>
+              </ul>
+            </div>
+            <div class="c">
+              <b>Premium</b>
+              <div class="price">S/ 2 400</div>
+              <ul>
+                <li>12 piezas</li>
+                <li>3 rondas</li>
+                <li>Editables</li>
+              </ul>
+            </div>
+          </div>
+          <p class="note">
+            <b>Mínimo: S/ 200</b> (una pieza suelta o una asesoría corta). Por
+            debajo no cubres costos ni tiempo.
+          </p>
+          <div class="grid2" style="margin-top: 10px">
+            <div class="box">
+              <b>🏷 Trabajos puntuales</b>Una pieza, un rediseño o un cambio de
+              formato. Se cotiza por pieza. Mínimo S/ 200.
+            </div>
+            <div class="box">
+              <b>💬 Asesorías</b>Revisión de marca o de un proyecto ajeno.
+              Sugerido: S/ 120 por hora. Mínimo S/ 200.
+            </div>
+          </div>
+          <div class="how">
+            <b>Recomendación:</b> si piden más ajustes después de las rondas
+            incluidas, cobra S/ 80 por ronda extra, con aprobación escrita antes
+            de empezar.
+          </div>
+        </div>
+
+        <div class="sec" id="s33">
+          <h3><span class="x">3.3</span>Cómo se calcula la tarifa</h3>
+          <p class="what">
+            <b>Qué es:</b> el precio mínimo por hora que debes cobrar para
+            cubrir tus gastos y tu sueldo.
+          </p>
+          <div class="grid4" style="align-items: center">
+            <div class="box"><b>Gastos</b>S/ 825.60</div>
+            <div class="box"><b>Sueldo</b>S/ 4,128</div>
+            <div class="box"><b>Provisiones</b>S/ 550.40</div>
+            <div class="box" style="background: var(--yellow)">
+              <b>÷ 80 h</b>horas que cobras
+            </div>
+          </div>
+          <div class="res" style="margin-top: 10px">
+            S/ 5,504 ÷ 80 horas = <b>S/ 68.80 por hora</b>
+          </div>
+          <div class="how" style="margin-top: 10px">
+            <b>Cómo usarla:</b> escribe tus gastos, el sueldo que quieres, tus
+            provisiones y las horas que sí cobras. Usa el resultado para armar
+            tus paquetes, no para regalar descuentos.
+          </div>
+          <div class="grid2">
+            <div>
+              <label for="cur">Moneda</label
+              ><select id="cur">
+                <option value="PEN">S/ soles</option>
+                <option value="USD">US$ dólares</option>
+              </select>
+              <label for="rate">Tipo de cambio (S/ por US$)</label
+              ><input id="rate" type="number" step="0.01" value="3.44" />
+              <label for="g">Gastos fijos (S/)</label
+              ><input id="g" type="number" value="825.60" min="0" />
+              <label for="s">Sueldo que quieres (S/)</label
+              ><input id="s" type="number" value="4128" min="0" />
+              <label for="p">Provisiones (S/)</label
+              ><input id="p" type="number" value="550.40" min="0" />
+              <label for="h">Horas que cobras al mes</label
+              ><input id="h" type="number" value="80" min="1" />
+            </div>
+            <div class="res" style="margin-top: 0">
+              <p class="lbl">Total mensual</p>
+              <p class="big" id="tTot">—</p>
+              <p class="lbl" style="margin-top: 12px">Tarifa mínima por hora</p>
+              <p class="big" id="tHr">—</p>
+              <p class="note">
+                Referencia: S/ 3.44 por dólar (SUNAT, inicios de octubre de
+                2026). Cámbiala por la del día.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec" id="s34">
+          <h3><span class="x">3.4</span>Cotización editable</h3>
+          <p class="what">
+            <b>Qué es:</b> la propuesta con precio. Llena los campos, descarga
+            el archivo y ábrelo en Word o Google Docs para editarlo.
+          </p>
+          <div class="grid2">
+            <div>
+              <label for="qc">Cliente</label
+              ><input id="qc" placeholder="Nombre de la marca" />
+            </div>
+            <div>
+              <label for="qs">Servicio</label
+              ><input id="qs" placeholder="Ej. pack de 6 posts" />
+            </div>
+            <div>
+              <label for="qn">Número de piezas</label
+              ><input id="qn" type="number" value="6" min="1" required />
+            </div>
+            <div>
+              <label for="qp">Precio total (S/)</label
+              ><input
+                id="qp"
+                type="number"
+                value="1280"
+                min="0"
+                required
+                step="0.01"
+              />
+            </div>
+            <div>
+              <label for="qa">Anticipo (%)</label
+              ><input
+                id="qa"
+                type="number"
+                value="50"
+                min="0"
+                max="100"
+                required
+                step="0.01"
+              />
+            </div>
+            <div>
+              <label for="qv">Vigencia (días)</label
+              ><input id="qv" type="number" value="7" min="1" required />
+            </div>
+          </div>
+          <label for="qx">Qué incluye (una línea por punto)</label>
+          <textarea id="qx">
+6 piezas en 1080 x 1350 px
+2 rondas de ajustes consolidados
+Entrega en JPG y PNG</textarea>
+          <label for="qy">Qué no incluye</label>
+          <textarea id="qy">
+Redacción de textos, fotografías, pauta publicitaria</textarea>
+          <div class="grid3" style="margin-top: 10px">
+            <div class="box"><b>Anticipo</b><span id="qAnt">S/ 640</span></div>
+            <div class="box"><b>Saldo</b><span id="qSal">S/ 640</span></div>
+            <div class="box"><b>Ajuste extra</b>S/ 80 por ronda</div>
+          </div>
+          <button class="btn" type="button" onclick="cotizacion()">
+            Descargar cotización (.html)
+          </button>
+          <button class="btn or" type="button" onclick="resumen()">
+            Resumen (.csv)
+          </button>
+          <p class="note" id="dlMsg" role="status"></p>
+        </div>
+
+        <div class="sec" id="s35">
+          <h3><span class="x">3.5</span>Revisiones y cambios</h3>
+          <p class="what">
+            <b>Qué es:</b> una guía para decidir si un pedido es una corrección
+            o un cambio de alcance.
+          </p>
+          <div class="how">
+            <b>¿Corrige lo acordado?</b> Ej.: “cambien el color del título”. →
+            Es una <b>revisión</b> dentro de las rondas.
+          </div>
+          <div class="how" style="background: #ffd0d6">
+            <b>¿Añade piezas o cambia el concepto?</b> Ej.: “agreguen tres
+            diseños nuevos”. → Es una <b>ampliación</b>: cotiza aparte y pide
+            aprobación.
+          </div>
+        </div>
+
+        <div class="sec" id="s36">
+          <h3><span class="x">3.6</span>Anticipo e inicio</h3>
+          <p class="what">
+            <b>Qué es:</b> el proyecto empieza solo cuando se cumplen tres
+            requisitos.
+          </p>
+          <div class="grid3">
+            <div class="box">
+              <b>1 · Aceptación</b>Propuesta aceptada por escrito
+            </div>
+            <div class="box">
+              <b>2 · Anticipo</b>Comprobante revisado en tu cuenta
+            </div>
+            <div class="box">
+              <b>3 · Materiales</b>Textos, fotos y guía de marca
+            </div>
+          </div>
+          <p class="do" style="margin-top: 10px">
+            Solo entonces: fecha de inicio confirmada y cronograma enviado.
+          </p>
+        </div>
+
+        <div class="sec" id="s37">
+          <h3>
+            <span class="x">3.7</span>Antes de cotizar: qué debe estar listo
+          </h3>
+          <div class="check" style="display: flex; gap: 10px; margin: 6px 0">
+            <input
+              type="checkbox"
+              id="k0"
+              class="kk"
+              style="width: 22px; height: 22px; flex: none"
+            /><span>Brief respondido y resumido en cinco líneas</span>
+          </div>
+          <div class="check" style="display: flex; gap: 10px; margin: 6px 0">
+            <input
+              type="checkbox"
+              id="k1"
+              class="kk"
+              style="width: 22px; height: 22px; flex: none"
+            /><span>Alcance escrito (piezas, revisiones, exclusiones)</span>
+          </div>
+          <div class="check" style="display: flex; gap: 10px; margin: 6px 0">
+            <input
+              type="checkbox"
+              id="k2"
+              class="kk"
+              style="width: 22px; height: 22px; flex: none"
+            /><span>Tarifa calculada con tus gastos (3.3)</span>
+          </div>
+          <div class="check" style="display: flex; gap: 10px; margin: 6px 0">
+            <input
+              type="checkbox"
+              id="k3"
+              class="kk"
+              style="width: 22px; height: 22px; flex: none"
+            /><span>Fechas condicionadas a que lleguen los materiales</span>
+          </div>
+          <div class="check" style="display: flex; gap: 10px; margin: 6px 0">
+            <input
+              type="checkbox"
+              id="k4"
+              class="kk"
+              style="width: 22px; height: 22px; flex: none"
+            /><span>Cotización editable lista (3.4)</span>
+          </div>
+          <div class="check" style="display: flex; gap: 10px; margin: 6px 0">
+            <input
+              type="checkbox"
+              id="k5"
+              class="kk"
+              style="width: 22px; height: 22px; flex: none"
+            /><span>Forma de pago: anticipo y saldo</span>
+          </div>
+          <div class="bar"><div id="kBar"></div></div>
+          <p class="lbl" id="kTxt" style="margin-top: 8px"></p>
+          <p class="note">Tu avance se guarda para este navegador.</p>
+        </div>
+      </section>
+
+      <!-- ============ 04 · PRODUCCIÓN CREATIVA ============ -->
+      <section class="folder" id="f4" style="--c: #f3652b">
+        <div class="fhead">
+          <div class="num">04</div>
+          <div>
+            <h1>Producción creativa</h1>
+            <p class="fpg">Páginas 18–24</p>
+          </div>
+        </div>
+        <nav class="toc2">
+          <a href="#s41">4.1 Tiempos</a><a href="#s42">4.2 Tablero</a
+          ><a href="#s43">4.3 Cronograma</a><a href="#s44">4.4 Investigación</a
+          ><a href="#s45">4.5 Concepto</a><a href="#s46">4.6 Presentación</a
+          ><a href="#s47">4.7 Feedback</a>
+        </nav>
+
+        <div class="sec" id="s41">
+          <h3><span class="x">4.1</span>Flujo de trabajo y tiempos</h3>
+          <p class="what">
+            <b>Qué es:</b> cuántos días demora cada etapa. Los días dependen de
+            lo que pida el cliente. Ejemplo: seis piezas.
+          </p>
+          <table id="tiempos">
+            <tr>
+              <th>Etapa</th>
+              <th>Días</th>
+            </tr>
+            <tr>
+              <td>Contacto y respuesta</td>
+              <td><input type="number" min="0" value="1" class="dd" /></td>
+            </tr>
+            <tr>
+              <td>Brief y reunión</td>
+              <td><input type="number" min="0" value="2" class="dd" /></td>
+            </tr>
+            <tr>
+              <td>Cotización</td>
+              <td><input type="number" min="0" value="1" class="dd" /></td>
+            </tr>
+            <tr>
+              <td>Acuerdo y anticipo</td>
+              <td><input type="number" min="0" value="2" class="dd" /></td>
+            </tr>
+            <tr>
+              <td>Planificación</td>
+              <td><input type="number" min="0" value="1" class="dd" /></td>
+            </tr>
+            <tr>
+              <td>Diseño (1 día por pieza)</td>
+              <td><input type="number" min="0" value="6" class="dd" /></td>
+            </tr>
+            <tr>
+              <td>Revisión (2 rondas)</td>
+              <td><input type="number" min="0" value="2" class="dd" /></td>
+            </tr>
+            <tr>
+              <td>Entrega y cobro del saldo</td>
+              <td><input type="number" min="0" value="1" class="dd" /></td>
+            </tr>
+            <tr>
+              <td>Cierre</td>
+              <td><input type="number" min="0" value="1" class="dd" /></td>
+            </tr>
+            <tr>
+              <td><b>Total</b></td>
+              <td><b id="ttl">17</b> días hábiles</td>
+            </tr>
+          </table>
+          <p class="note">
+            <b>Si el cliente tarda en responder:</b> suma días a la etapa de
+            brief o revisión y avísale por escrito la nueva fecha.
+          </p>
+        </div>
+
+        <div class="sec" id="s42">
+          <h3><span class="x">4.2</span>Tablero de producción</h3>
+          <p class="what">
+            <b>Qué es:</b> un tablero por estados. El <b>proyecto</b> es el
+            encargo completo; la <b>tarea</b> es una acción pequeña dentro de
+            él.
+          </p>
+          <div class="kan">
+            <div>
+              <h5>Por hacer</h5>
+              <div class="card-p">Investigación de referencias</div>
+            </div>
+            <div>
+              <h5>En diseño</h5>
+              <div class="card-p">
+                <b>P-026</b> · 6 posts · Brisa Café (ficticio)<br />Tarea:
+                diseñar post 03
+              </div>
+            </div>
+            <div>
+              <h5>En revisión</h5>
+              <div class="card-p">Ajustes en P03 y P05</div>
+            </div>
+            <div>
+              <h5>Entregado</h5>
+              <div class="card-p">Saldo confirmado</div>
+            </div>
+          </div>
+          <p class="note" style="margin-top: 8px">
+            Un proyecto puede tener 25 tareas, pero sigue siendo un solo
+            proyecto con una fecha final y una estructura de pagos.
+          </p>
+        </div>
+
+        <div class="sec" id="s43">
+          <h3><span class="x">4.3</span>Cronograma</h3>
+          <p class="what">
+            <b>Qué es:</b> las fechas en orden. <b>Horas</b> son tiempo de
+            trabajo; <b>días</b> son días de calendario, que incluyen esperas
+            del cliente.
+          </p>
+          <div class="tl" style="--c: #f3652b">
+            <div class="it"><b>05/11</b>Inicio y materiales recibidos</div>
+            <div class="it"><b>07–09/11</b>Concepto y producción</div>
+            <div class="it"><b>10/11</b>Presentación de las seis piezas</div>
+            <div class="it"><b>11/11</b>Respuesta del cliente (feedback)</div>
+            <div class="it"><b>12/11</b>Ajustes</div>
+            <div class="it"><b>13/11</b>Aprobación escrita</div>
+            <div class="it"><b>14/11</b>Saldo y entrega</div>
+          </div>
+        </div>
+
+        <div class="sec" id="s44">
+          <h3><span class="x">4.4</span>Investigación</h3>
+          <p class="what">
+            <b>Qué es:</b> reunir referencias antes de diseñar, en tres capas:
+            marca, audiencia y canal.
+          </p>
+          <div class="grid3">
+            <div class="box">
+              <b>Marca</b>Personalidad, colores existentes y lo que la
+              diferencia.
+            </div>
+            <div class="box">
+              <b>Audiencia</b>Qué necesita y en qué contexto mira la pieza.
+            </div>
+            <div class="box">
+              <b>Canal</b>Medidas, legibilidad en celular y comportamiento.
+            </div>
+          </div>
+          <div class="how">
+            <b>Regla:</b> para cada referencia escribe una frase:
+            <i>qué aporta</i>. Si no puedes escribirla, no la guardes. Guarda
+            también la fuente, para no usar imágenes sin licencia.
+          </div>
+        </div>
+
+        <div class="sec" id="s45">
+          <h3><span class="x">4.5</span>Del hallazgo al concepto</h3>
+          <p class="what">
+            <b>Qué es:</b> una idea que une todas las piezas y que puedes
+            explicar en una frase.
+          </p>
+          <div class="grid4" style="align-items: stretch">
+            <div class="box" style="background: #ffe3ee">
+              <b>1 · Hallazgo</b>El cliente necesita variedad sin perder lo
+              artesanal.
+            </div>
+            <div class="box" style="background: #fff0b3">
+              <b>2 · Concepto</b>“Una pausa con sabor” (ficticio).
+            </div>
+            <div class="box" style="background: #d6f6f2">
+              <b>3 · Decisiones</b>Tipografía clara, fotos reales, color cálido.
+            </div>
+            <div class="box" style="background: #ede8ff">
+              <b>4 · Aplicación</b>Misma retícula, acentos por categoría.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec" id="s46">
+          <h3><span class="x">4.6</span>Presentación al cliente</h3>
+          <p class="what">
+            <b>Qué es:</b> una secuencia que guía las observaciones. No envíes
+            archivos sueltos.
+          </p>
+          <div class="grid4">
+            <div class="box"><b>1</b>Objetivo</div>
+            <div class="box"><b>2</b>Concepto y razones</div>
+            <div class="box"><b>3</b>Las seis piezas</div>
+            <div class="box"><b>4</b>Preguntas para validar</div>
+          </div>
+          <div class="how" style="margin-top: 10px">
+            <b>Pregunta bien:</b> “¿Los seis mensajes están correctos?” y no
+            “¿qué te parece?”.
+          </div>
+        </div>
+
+        <div class="sec" id="s47">
+          <h3><span class="x">4.7</span>Registro de feedback</h3>
+          <p class="what">
+            <b>Qué es:</b> una lista única por ronda. Cada observación tiene
+            pieza, ajuste, prioridad y estado.
+          </p>
+          <table>
+            <tr>
+              <th>Fecha</th>
+              <th>Pieza</th>
+              <th>Ajuste</th>
+              <th>Ronda</th>
+              <th>Estado</th>
+            </tr>
+            <tr>
+              <td>11/11</td>
+              <td>P03</td>
+              <td>Cambiar nombre del producto</td>
+              <td>1/2</td>
+              <td><b>Resuelto</b></td>
+            </tr>
+            <tr>
+              <td>11/11</td>
+              <td>P05</td>
+              <td>Dar más protagonismo al precio</td>
+              <td>1/2</td>
+              <td><b>Resuelto</b></td>
+            </tr>
+          </table>
+          <p class="note">
+            <b>Aprobación:</b> pide una frase clara por escrito, por ejemplo:
+            “Apruebo las seis piezas de la versión v02”.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ 05 · ENTREGA Y CIERRE ============ -->
+      <section class="folder" id="f5" style="--c: #52c7bc">
+        <div class="fhead">
+          <div class="num">05</div>
+          <div>
+            <h1>Entrega y cierre</h1>
+            <p class="fpg">Páginas 25–28</p>
+          </div>
+        </div>
+        <nav class="toc2">
+          <a href="#s51">5.1 Calidad</a><a href="#s52">5.2 Archivos</a
+          ><a href="#s53">5.3 Pago y entrega</a
+          ><a href="#s54">5.4 Seguimiento</a>
+        </nav>
+
+        <div class="sec" id="s51">
+          <h3><span class="x">5.1</span>Control de calidad</h3>
+          <p class="what">
+            <b>Qué es:</b> revisar con ojos de producción, no de autor, antes de
+            entregar.
+          </p>
+          <div class="grid3">
+            <div class="box">
+              <b>Contenido</b>Ortografía, cifras, fechas, CTA
+            </div>
+            <div class="box"><b>Marca</b>Logo correcto, contrastes y tono</div>
+            <div class="box">
+              <b>Visual</b>Alineación, legibilidad en celular
+            </div>
+            <div class="box">
+              <b>Técnica</b>Dimensiones, modo de color, exportación
+            </div>
+            <div class="box">
+              <b>Licencias</b>Imágenes, fuentes e iconos autorizados
+            </div>
+          </div>
+          <p class="do" style="margin-top: 10px">
+            Abre las imágenes exportadas en tu celular antes de entregar.
+          </p>
+        </div>
+
+        <div class="sec" id="s52">
+          <h3><span class="x">5.2</span>Archivos de entrega</h3>
+          <p class="what">
+            <b>Qué es:</b> el paquete que recibe el cliente. Dos tipos de
+            archivo, que no son lo mismo:
+          </p>
+          <div class="grid2">
+            <div class="box" style="background: #d6f6f2">
+              <b>Final</b>Listo para usar: JPG, PNG o PDF.
+            </div>
+            <div class="box" style="background: #ede8ff">
+              <b>Fuente o editable</b>Documento de producción: AI, PSD, FIG.
+              Solo si fue contratado.
+            </div>
+          </div>
+          <div class="how" style="margin-top: 10px">
+            <b>Paquete:</b> 01_PUBLICACIONES · 02_PREVIA · 03_INSTRUCCIONES ·
+            04_LICENCIAS. Incluye un README con fecha, versión aprobada y
+            contacto.
+          </div>
+        </div>
+
+        <div class="sec" id="s53">
+          <h3><span class="x">5.3</span>Pago y entrega</h3>
+          <p class="what">
+            <b>Qué es:</b> “diseño aprobado” no significa “proyecto cerrado”.
+            Entrega cuando el saldo esté confirmado.
+          </p>
+          <div class="grid4">
+            <div
+              class="chev"
+              style="grid-template-columns: repeat(4, 1fr); grid-column: 1 / -1"
+            >
+              <div class="chevron c1"><b>1</b><br />Aprobación escrita</div>
+              <div class="chevron c2"><b>2</b><br />Saldo confirmado</div>
+              <div class="chevron c3"><b>3</b><br />Archivos verificados</div>
+              <div class="chevron c4"><b>4</b><br />Envío y recepción</div>
+            </div>
+          </div>
+          <div class="ex" style="margin-top: 10px">
+            <b>Ejemplo (ficticio):</b> presupuesto S/ 1 280 · anticipo S/ 640 ·
+            saldo S/ 640 · se entregan seis posts JPG/PNG al confirmar el saldo.
+          </div>
+        </div>
+
+        <div class="sec" id="s54">
+          <h3><span class="x">5.4</span>Seguimiento</h3>
+          <p class="what">
+            <b>Qué es:</b> después de entregar, confirma que todo funciona, pide
+            retroalimentación y un testimonio. Sin insistir para vender.
+          </p>
+          <div class="tl" style="--c: #52c7bc">
+            <div class="it">
+              <b>Entrega</b>Confirma que puede abrir los archivos
+            </div>
+            <div class="it">
+              <b>+1 semana</b>Pregunta si usó bien los materiales
+            </div>
+            <div class="it">
+              <b>+2 semanas</b>Pide un testimonio de dos líneas
+            </div>
+            <div class="it">
+              <b>Cierre</b>Archiva el proyecto y anota lo aprendido
+            </div>
+          </div>
+          <p class="lbl">Plantillas</p>
+          <button
+            class="btn"
+            type="button"
+            onclick="
+              guardar(
+                'correo_entrega.txt',
+                'Hola, [nombre].\n\nConfirmado el saldo, te comparto los diseños finales de [campaña]. Incluí los archivos organizados y las indicaciones de uso.\n\nPor favor confirma que puedes abrir el material.\n\nGracias por confiar en mi trabajo.\n',
+              )
+            "
+          >
+            Correo de entrega
+          </button>
+          <button
+            class="btn lime"
+            type="button"
+            onclick="
+              guardar(
+                'pedido_testimonio.txt',
+                'Hola, [nombre]. Quería confirmar que todo funciona bien con los diseños entregados.\n\nSi el proceso te resultó útil, ¿podrías contar en dos o tres líneas qué valoraste de trabajar conmigo? Con tu permiso, me gustaría citar tu comentario en mi portafolio.\n',
+              )
+            "
+          >
+            Pedido de testimonio
+          </button>
+        </div>
+      </section>
+
+      <!-- ============ 06 · FINANZAS FREELANCE ============ -->
+      <section class="folder" id="f6" style="--c: #5576e8; --t: #ffffff">
+        <div class="fhead">
+          <div class="num">06</div>
+          <div>
+            <h1>Finanzas freelance</h1>
+            <p class="fpg">Páginas 29–31</p>
+          </div>
+        </div>
+        <nav class="toc2">
+          <a href="#s61">6.1 Conceptos</a><a href="#s62">6.2 Hoja de cálculo</a
+          ><a href="#s63">6.3 Rentabilidad</a>
+        </nav>
+
+        <div class="sec" id="s61">
+          <h3><span class="x">6.1</span>Ingresos, costos y contribución</h3>
+          <p class="what">
+            <b>Qué es:</b> tres cosas que suelen confundirse. Mira el ejemplo,
+            en soles.
+          </p>
+          <table>
+            <tr>
+              <th>Concepto</th>
+              <th>Qué es</th>
+              <th>Ejemplo</th>
+            </tr>
+            <tr>
+              <td><b>Ingreso</b></td>
+              <td>Lo que facturas o cobras</td>
+              <td>S/ 1 280</td>
+            </tr>
+            <tr>
+              <td><b>Costo directo</b></td>
+              <td>Gasto de ese proyecto (licencia, compra)</td>
+              <td>S/ 62</td>
+            </tr>
+            <tr>
+              <td><b>Contribución</b></td>
+              <td>Ingreso − costo directo</td>
+              <td><b>S/ 1 218</b></td>
+            </tr>
+          </table>
+          <div class="alert" style="background: var(--navy)">
+            <h4>Cuidado</h4>
+            <p style="margin: 0">
+              La contribución <b>no es utilidad neta</b>. Aún faltan gastos
+              generales, impuestos y el tiempo que no cobras.
+            </p>
+          </div>
+        </div>
+
+        <div class="sec" id="s62">
+          <h3><span class="x">6.2</span>Hoja de cálculo (Google Sheets)</h3>
+          <p class="what">
+            <b>Qué es:</b> una hoja con cinco pestañas. Cada una tiene datos de
+            entrada y resultados calculados.
+          </p>
+          <div class="grid3">
+            <div class="box"><b>CONFIG</b>Moneda y tarifa por hora</div>
+            <div class="box">
+              <b>PRESUPUESTOS</b>ID, cliente, horas, factor, precio
+            </div>
+            <div class="box">
+              <b>INGRESOS / GASTOS</b>Fecha, ID, importe, moneda
+            </div>
+          </div>
+          <div class="how" style="margin-top: 10px">
+            <b>Fórmulas de ejemplo:</b> Saldo = Precio − Cobrado · Contribución
+            = Precio − Costos directos. Usa una sola moneda por hoja.
+          </div>
+          <button
+            class="btn dk"
+            type="button"
+            onclick="
+              guardar(
+                'contabilidad_basica.csv',
+                'ID,Fecha,Proyecto,Tipo,Categoria,Moneda,Importe,Estado\nP-026,03/11/2026,Brisa Café,Ingreso,Anticipo,PEN,640,Cobrado\nP-026,14/11/2026,Brisa Café,Ingreso,Saldo,PEN,640,Cobrado\nP-026,05/11/2026,Brisa Café,Gasto,Licencia,PEN,62,Pagado\n',
+              )
+            "
+          >
+            Descargar hoja de ejemplo (.csv)
+          </button>
+        </div>
+
+        <div class="sec" id="s63">
+          <h3><span class="x">6.3</span>Rentabilidad: tiempo y dinero</h3>
+          <p class="what">
+            <b>Qué es:</b> comparar lo previsto con lo real. Las horas y los
+            soles se miden por separado, en gráficas distintas.
+          </p>
+          <div class="grid2">
+            <div class="chart">
+              <p class="cap">Horas<small>Previstas vs. reales</small></p>
+              <div
+                class="bars"
+                role="img"
+                aria-label="Horas previstas 15,5 y reales 16,25"
+              >
+                <div>
+                  <div class="b" style="height: 95%; background: #5b3fdb"></div>
+                  Previstas<br />15,5 h
+                </div>
+                <div>
+                  <div
+                    class="b"
+                    style="height: 100%; background: #d8f43e"
+                  ></div>
+                  Reales<br />16,25 h
+                </div>
+              </div>
+              <p class="leg">Diferencia: +0,75 h (+5 %).</p>
+            </div>
+            <div class="chart">
+              <p class="cap">
+                Soles<small>Cobrado, costos y contribución</small>
+              </p>
+              <div
+                class="bars"
+                role="img"
+                aria-label="Cobrado 1280, costos 62, contribución 1218 soles"
+              >
+                <div>
+                  <div
+                    class="b"
+                    style="height: 100%; background: #f57fb8"
+                  ></div>
+                  Cobrado<br />S/ 1 280
+                </div>
+                <div>
+                  <div class="b" style="height: 5%; background: #f3652b"></div>
+                  Costos<br />S/ 62
+                </div>
+                <div>
+                  <div class="b" style="height: 95%; background: #52c7bc"></div>
+                  Contribución<br />S/ 1 218
+                </div>
+              </div>
+              <p class="leg">Margen de contribución: 95 %.</p>
+            </div>
+          </div>
+          <div class="grid2" style="margin-top: 12px">
+            <div class="box">
+              <b>Tarifa real por hora</b>1 280 ÷ 16,25 = <b>S/ 78,77</b>. Lo que
+              ganaste de verdad por hora.
+            </div>
+            <div class="box">
+              <b>Horas de más</b>16,25 − 15,5 = 0,75 h. Revisa qué tomó más
+              tiempo.
+            </div>
+          </div>
+          <div
+            class="semaforo"
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr 1fr;
+              gap: 10px;
+              margin-top: 12px;
+            "
+          >
+            <div class="box" style="background: #d9f7df">
+              <b>Verde</b>Tarifa real ≥ calculada. Vas bien.
+            </div>
+            <div class="box" style="background: #fff0b3">
+              <b>Amarillo</b>Baja un poco. Revisa tiempos.
+            </div>
+            <div class="box" style="background: #ffd0d6">
+              <b>Rojo</b>Baja mucho. Ajusta paquetes.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 07 · PONLO EN PRÁCTICA ============ -->
+      <section class="folder" id="f7" style="--c: #f6d65b">
+        <div class="fhead">
+          <div class="num">07</div>
+          <div>
+            <h1>Ponlo en práctica</h1>
+            <p class="fpg">Páginas 32–35</p>
+          </div>
+        </div>
+        <nav class="toc2">
+          <a href="#s71">7.1 Caso completo</a
+          ><a href="#s72">7.2 Configuración</a><a href="#s73">7.3 Checklist</a
+          ><a href="#s74">7.4 Recursos</a>
+        </nav>
+
+        <div class="sec" id="s71">
+          <h3>
+            <span class="x">7.1</span>Caso completo: Brisa Café (ficticio)
+          </h3>
+          <p class="what">
+            <b>Qué es:</b> el mismo proyecto desde la consulta hasta el cierre.
+            Cada paso deja un documento.
+          </p>
+          <div class="tl" style="--c: #f6d65b">
+            <div class="it">
+              <b>03/11</b>Consulta · respuesta con preguntas · brief
+            </div>
+            <div class="it">
+              <b>03–05/11</b>Cotización S/ 1 280 · acuerdo · anticipo S/ 640
+            </div>
+            <div class="it">
+              <b>06–09/11</b>Investigación, concepto y producción
+            </div>
+            <div class="it">
+              <b>10–12/11</b>Presentación · feedback · ajustes
+            </div>
+            <div class="it"><b>13/11</b>Aprobación escrita</div>
+            <div class="it"><b>14/11</b>Saldo S/ 640 · entrega JPG/PNG</div>
+            <div class="it"><b>21/11</b>Seguimiento y testimonio · cierre</div>
+          </div>
+        </div>
+
+        <div class="sec" id="s72">
+          <h3><span class="x">7.2</span>Configura tu estudio en una tarde</h3>
+          <div class="grid2">
+            <div class="box">
+              <b>Bloque 1 · 30 min</b>Carpeta raíz, carpeta modelo y convención
+              de nombres.
+            </div>
+            <div class="box">
+              <b>Bloque 2 · 45 min</b>Clientes, consultas, proyectos y tareas.
+              Vistas “esta semana” y “por cobrar”.
+            </div>
+            <div class="box">
+              <b>Bloque 3 · 30 min</b>Hoja de finanzas con tu tarifa. Carga el
+              caso y verifica totales.
+            </div>
+            <div class="box">
+              <b>Bloque 4 · 20 min</b>Simulación: de la consulta a la entrega.
+              Si tardas más de dos minutos en saber el siguiente paso,
+              simplifica.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec" id="s73">
+          <h3><span class="x">7.3</span>Checklist del estudio</h3>
+          <p class="what">
+            Marca lo que ya tienes. El progreso se guarda para este navegador.
+          </p>
+          <div class="check" style="display: flex; gap: 10px; margin: 6px 0">
+            <input
+              type="checkbox"
+              id="c0"
+              class="kk2"
+              style="width: 22px; height: 22px; flex: none"
+            /><span>Servicios con exclusiones definidos</span>
+          </div>
+          <div class="check" style="display: flex; gap: 10px; margin: 6px 0">
+            <input
+              type="checkbox"
+              id="c1"
+              class="kk2"
+              style="width: 22px; height: 22px; flex: none"
+            /><span>Registro de consultas y seguimientos</span>
+          </div>
+          <div class="check" style="display: flex; gap: 10px; margin: 6px 0">
+            <input
+              type="checkbox"
+              id="c2"
+              class="kk2"
+              style="width: 22px; height: 22px; flex: none"
+            /><span>Brief y propuesta reutilizables</span>
+          </div>
+          <div class="check" style="display: flex; gap: 10px; margin: 6px 0">
+            <input
+              type="checkbox"
+              id="c3"
+              class="kk2"
+              style="width: 22px; height: 22px; flex: none"
+            /><span>Cronograma y tareas con fechas</span>
+          </div>
+          <div class="check" style="display: flex; gap: 10px; margin: 6px 0">
+            <input
+              type="checkbox"
+              id="c4"
+              class="kk2"
+              style="width: 22px; height: 22px; flex: none"
+            /><span>Aprobación escrita antes de cada entrega</span>
+          </div>
+          <div class="check" style="display: flex; gap: 10px; margin: 6px 0">
+            <input
+              type="checkbox"
+              id="c5"
+              class="kk2"
+              style="width: 22px; height: 22px; flex: none"
+            /><span>Ingresos y gastos por proyecto, sin mezclar monedas</span>
+          </div>
+          <div class="bar"><div id="cBar"></div></div>
+          <p class="lbl" id="cTxt" style="margin-top: 8px"></p>
+        </div>
+
+        <div class="sec" id="s74">
+          <h3><span class="x">7.4</span>Recursos y plantillas</h3>
+          <p class="what">
+            Descárgalas y personalízalas. Los archivos son de texto o CSV, para
+            abrir en cualquier editor o en Excel y Sheets.
+          </p>
+          <div class="tpls" id="tpls"></div>
+        </div>
+      </section>
+    </main>
+    <nav class="reader-pagination" aria-label="Cambiar de módulo">
+      <a id="previous-chapter" href="#f1">← Módulo anterior</a
+      ><a href="/">Explorar el kit</a
+      ><a id="next-chapter" href="#f2">Siguiente módulo →</a>
+    </nav>
+
+    <footer>
+      <div class="wrap">
+        <div style="font: 800 22px var(--logo); color: var(--lime)">
+          Freelance Studio Kit
+        </div>
+        <p style="margin: 6px 0 0; font-size: 14px">
+          Ashley Rodríguez · contenido educativo · importes y tiempos de ejemplo
+        </p>
+      </div>
+    </footer>
+
+    <div class="here" id="here" aria-live="polite">
+      Carpeta: 01 · Empieza aquí
+    </div>
+
+    <div class="save-banner">
+      <span id="save-status" role="status">Cargando tu avance…</span
+      ><button type="button" id="retry-progress" hidden>Reintentar</button>
+    </div>
+    <script>
+      /* avisos, copiar y respuestas para pensar primero */
+      function toast(html) {
+        let t = document.getElementById('toast')
+        if (!t) {
+          t = document.createElement('div')
+          t.id = 'toast'
+          t.setAttribute('role', 'status')
+          document.body.appendChild(t)
+        }
+        t.innerHTML = html
+        t.classList.add('on')
+        clearTimeout(window._tt)
+        window._tt = setTimeout(() => t.classList.remove('on'), 12000)
+      }
+      async function copiarTexto(t) {
+        try {
+          await navigator.clipboard.writeText(t)
+          return true
+        } catch {}
+        const ta = document.createElement('textarea')
+        ta.value = t
+        ta.style.position = 'fixed'
+        document.body.appendChild(ta)
+        ta.select()
+        let ok = false
+        try {
+          ok = document.execCommand('copy')
+        } catch {}
+        ta.remove()
+        return ok
+      }
+      function rv(b) {
+        const p = b.nextElementSibling
+        p.hidden = !p.hidden
+        b.setAttribute('aria-expanded', String(!p.hidden))
+      }
+
+      /* carpeta actual */
+      ;(function () {
+        const here = document.getElementById('here')
+        const names = {
+          f1: '01 · Empieza aquí',
+          f2: '02 · Bases y clientes',
+          f3: '03 · Propuestas y acuerdos',
+          f4: '04 · Producción creativa',
+          f5: '05 · Entrega y cierre',
+          f6: '06 · Finanzas freelance',
+          f7: '07 · Ponlo en práctica',
+        }
+        const obs = new IntersectionObserver(
+          (es) => {
+            es.forEach((e) => {
+              if (e.isIntersecting) {
+                here.textContent = 'Carpeta: ' + names[e.target.id]
+              }
+            })
+          },
+          { rootMargin: '-40% 0px -55% 0px' },
+        )
+        document.querySelectorAll('.folder').forEach((f) => obs.observe(f))
+      })()
+
+      /* respuesta personalizable */
+      const pf = ['pn', 'ps', 'pf', 'pt', 'pe']
+      function preview() {
+        const v = (id) => document.getElementById(id).value || '[completa aquí]'
+        document.getElementById('preview').textContent =
+          '¡Hola, ' +
+          v('pn') +
+          '! Gracias por escribirme. Para evaluar tu proyecto de ' +
+          v('ps') +
+          ' necesito conocer ' +
+          v('pe') +
+          ', y la fecha en que las necesitas (' +
+          v('pf') +
+          '). Con eso te envío una propuesta con alcance, tiempos y presupuesto.\n\n' +
+          v('pt')
+      }
+      pf.forEach((f) =>
+        document.getElementById(f).addEventListener('input', preview),
+      )
+      preview()
+      document.getElementById('copyBtn').addEventListener('click', async () => {
+        const ok = await copiarTexto(
+          document.getElementById('preview').textContent,
+        )
+        document.getElementById('copyMsg').textContent = ok
+          ? 'Mensaje copiado.'
+          : 'No se pudo copiar. Selecciona el texto de la vista previa y cópialo manualmente.'
+      })
+
+      /* filtro */
+      const mx = [...document.querySelectorAll('.mx')]
+      function matrix() {
+        const v = mx.map((s) => Number(s.value)).filter(Boolean)
+        const sc = document.getElementById('mScore'),
+          bar = document.getElementById('mBar'),
+          out = document.getElementById('mOut')
+        if (v.length < 5) {
+          sc.textContent = '—'
+          bar.style.width = (v.length / 5) * 100 + '%'
+          out.textContent = 'Completa los cinco criterios.'
+          return
+        }
+        const t = v.reduce((a, b) => a + b, 0)
+        sc.textContent = t + ' / 15'
+        bar.style.width = (t / 15) * 100 + '%'
+        out.textContent =
+          t >= 13
+            ? 'Bandera verde: acepta y envía la propuesta.'
+            : t >= 9
+              ? 'Bandera amarilla: negocia plazo, entregables o precio.'
+              : 'Bandera roja: rechaza o redefine el encargo.'
+      }
+      mx.forEach((s) => s.addEventListener('change', matrix))
+      matrix()
+
+      /* tiempos */
+      function tiempos() {
+        document.getElementById('ttl').textContent = [
+          ...document.querySelectorAll('.dd'),
+        ].reduce((a, i) => a + (Number(i.value) || 0), 0)
+      }
+      document
+        .querySelectorAll('.dd')
+        .forEach((i) => i.addEventListener('input', tiempos))
+      tiempos()
+
+      /* tarifa */
+      const $ = (id) => document.getElementById(id)
+      const fmt = (n) =>
+        isFinite(n)
+          ? n.toLocaleString('es-PE', { maximumFractionDigits: 2 })
+          : '—'
+      function tarifa() {
+        const pen = $('cur').value === 'PEN',
+          rate = Number($('rate').value) || 3.44
+        const total =
+          Number($('g').value) + Number($('s').value) + Number($('p').value)
+        const hr = Number($('h').value) > 0 ? total / Number($('h').value) : NaN
+        const conv = (n) => (pen ? 'S/ ' + fmt(n) : 'US$ ' + fmt(n / rate))
+        $('tTot').textContent = conv(total)
+        $('tHr').textContent = conv(hr) + ' / h'
+      }
+      ;['cur', 'rate', 'g', 's', 'p', 'h'].forEach((id) =>
+        $(id).addEventListener('input', tarifa),
+      )
+      tarifa()
+
+      /* cotización */
+      function cot() {
+        const total = Number($('qp').value) || 0,
+          a = Number($('qa').value) || 0
+        $('qAnt').textContent = 'S/ ' + ((total * a) / 100).toFixed(2)
+        $('qSal').textContent = 'S/ ' + (total - (total * a) / 100).toFixed(2)
+      }
+      ;['qp', 'qa'].forEach((id) => $(id).addEventListener('input', cot))
+      cot()
+
+      /* Checklists saved in Netlify Database, scoped to an anonymous HttpOnly cookie. */
+      const kk = [...document.querySelectorAll('.kk')]
+      const kk2 = [...document.querySelectorAll('.kk2')]
+      function paintChecks(list, barId, txtId) {
+        const done = list.filter((k) => k.checked).length
+        $(barId).style.width = (done / list.length) * 100 + '%'
+        $(txtId).textContent = done + ' de ' + list.length + ' listos'
+      }
+      let saveQueue = Promise.resolve()
+      function saveChecks(group, list) {
+        const checks = list.map((k) => k.checked)
+        document.getElementById('save-status').textContent = 'Guardando avance…'
+        saveQueue = saveQueue
+          .catch(() => {})
+          .then(async () => {
+            const res = await fetch('/.netlify/functions/progress', {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ group, checks }),
+            })
+            if (!res.ok) throw new Error('save')
+            document.getElementById('save-status').textContent =
+              'Avance guardado para este navegador.'
+            document.getElementById('retry-progress').hidden = true
+          })
+          .catch(() => {
+            document.getElementById('save-status').textContent =
+              'No se pudo guardar. Tus marcas siguen visibles; pulsa Reintentar.'
+            document.getElementById('retry-progress').hidden = false
+          })
+      }
+      function ck1() {
+        paintChecks(kk, 'kBar', 'kTxt')
+      }
+      function ck2() {
+        paintChecks(kk2, 'cBar', 'cTxt')
+      }
+      kk.forEach((k) =>
+        k.addEventListener('change', () => {
+          ck1()
+          saveChecks('quote', kk)
+        }),
+      )
+      kk2.forEach((k) =>
+        k.addEventListener('change', () => {
+          ck2()
+          saveChecks('studio', kk2)
+        }),
+      )
+      ck1()
+      ck2()
+      async function loadProgress() {
+        ;[...kk, ...kk2].forEach((k) => (k.disabled = true))
+        document.getElementById('save-status').textContent =
+          'Cargando tu avance…'
+        try {
+          const res = await fetch('/.netlify/functions/progress')
+          if (!res.ok) throw new Error('load')
+          const data = await res.json()
+          kk.forEach((k, i) => (k.checked = !!data.quote[i]))
+          kk2.forEach((k, i) => (k.checked = !!data.studio[i]))
+          ck1()
+          ck2()
+          document.getElementById('save-status').textContent =
+            'Avance sincronizado para este navegador.'
+          document.getElementById('retry-progress').hidden = true
+        } catch {
+          document.getElementById('save-status').textContent =
+            'No se pudo recuperar el avance. Reintenta para continuar.'
+          document.getElementById('retry-progress').hidden = false
+          return
+        }
+        ;[...kk, ...kk2].forEach((k) => (k.disabled = false))
+      }
+      document
+        .getElementById('retry-progress')
+        .addEventListener('click', () => {
+          if (kk[0].disabled) {
+            loadProgress()
+          } else {
+            saveChecks('quote', kk)
+            saveChecks('studio', kk2)
+            document.getElementById('retry-progress').hidden = true
+          }
+        })
+      loadProgress()
+
+      /* descargas */
+      const PREG = [
+        '¿Cuál es el problema o la oportunidad?',
+        '¿Qué debe hacer la persona que vea la pieza?',
+        '¿A quién va dirigida?',
+        '¿Cuál es el mensaje principal?',
+        '¿Dónde se publicará?',
+        '¿Qué materiales tienes (logo, fotos, textos, guía de marca)?',
+        '¿Quién aprueba el diseño? (nombre y contacto)',
+        '¿Qué fecha necesitas y qué presupuesto tienes?',
+      ]
+      function docHTML(title, body) {
+        return (
+          '<!doctype html><html lang="es"><head><meta charset="utf-8"><title>' +
+          title +
+          '</title><style>body{font-family:Arial,sans-serif;max-width:720px;margin:40px auto;color:#302e47;line-height:1.5}h1{color:#5a40c9}table{width:100%;border-collapse:collapse}td{border:1px solid #302e47;padding:8px;vertical-align:top}</style></head><body>' +
+          body +
+          '</body></html>'
+        )
+      }
+
+      function descargaLocal(file, data, mime) {
+        const blob = new Blob(['\ufeff', data], {
+          type: mime || 'text/plain;charset=utf-8',
+        })
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = file
+        document.body.appendChild(a)
+        a.click()
+        a.remove()
+        setTimeout(() => URL.revokeObjectURL(url), 60000)
+        toast('Descarga iniciada: ' + file + '.')
+      }
+      function guardar(file, data, mime) {
+        try {
+          descargaLocal(file, data, mime)
+        } catch {
+          toast('No se pudo descargar. Inténtalo de nuevo.')
+        }
+      }
+      function brief(kind) {
+        if (kind === 'txt') {
+          descargaLocal(
+            'brief_cliente.txt',
+            'BRIEF PARA TU PROYECTO\n\n' +
+              PREG.map((p, i) => i + 1 + '. ' + p + '\n   Respuesta:\n').join(
+                '\n',
+              ) +
+              '\nSi algo no queda claro, agendamos una reunión de 20 minutos.\n',
+          )
+        } else {
+          const rows = PREG.map(
+            (p, i) =>
+              '<tr><td><b>' +
+              (i + 1) +
+              '. ' +
+              p +
+              '</b><br><br>Respuesta:</td></tr>',
+          ).join('')
+          descargaLocal(
+            'brief_cliente.html',
+            docHTML(
+              'Brief para tu proyecto',
+              '<h1>Brief para tu proyecto</h1><p>Nombre de la marca: ____________</p><table>' +
+                rows +
+                '</table><p><b>TIPS DE DISEÑADOR:</b> si algo no queda claro, pide una reunión de 20 minutos y confirma por escrito.</p>',
+            ),
+            'text/html;charset=utf-8',
+          )
+        }
+        document.getElementById('briefMsg').textContent = 'Descarga iniciada.'
+      }
+      async function copiarPreguntas() {
+        const t = PREG.map((p, i) => i + 1 + '. ' + p).join('\n')
+        const ok = await copiarTexto(t)
+        document.getElementById('briefMsg').textContent = ok
+          ? 'Preguntas copiadas. Pégalas en Google Forms como respuesta larga.'
+          : 'No se pudo copiar. Descarga la versión de texto para acceder a las preguntas.'
+      }
+      function escapeHTML(v) {
+        return v.replace(
+          /[&<>"']/g,
+          (c) =>
+            ({
+              '&': '&amp;',
+              '<': '&lt;',
+              '>': '&gt;',
+              '"': '&quot;',
+              "'": '&#39;',
+            })[c],
+        )
+      }
+      function cotizacion() {
+        if (!validarCotizacion()) return
+        const v = (id) => escapeHTML(document.getElementById(id).value || '')
+        const inc = v('qx')
+          .split('\n')
+          .filter(Boolean)
+          .map((x) => '<li>' + x + '</li>')
+          .join('')
+        const exc = v('qy')
+          .split('\n')
+          .filter(Boolean)
+          .map((x) => '<li>' + x + '</li>')
+          .join('')
+        const total = Number(v('qp')) || 0,
+          a = Number(v('qa')) || 0
+        const body =
+          '<h1>Cotización</h1><table><tr><td><b>Cliente</b></td><td>' +
+          v('qc') +
+          '</td></tr><tr><td><b>Servicio</b></td><td>' +
+          v('qs') +
+          '</td></tr><tr><td><b>Número de piezas</b></td><td>' +
+          v('qn') +
+          '</td></tr><tr><td><b>Incluye</b></td><td><ul>' +
+          inc +
+          '</ul></td></tr><tr><td><b>No incluye</b></td><td><ul>' +
+          exc +
+          '</ul></td></tr><tr><td><b>Precio total</b></td><td>S/ ' +
+          total.toFixed(2) +
+          '</td></tr><tr><td><b>Anticipo (' +
+          a +
+          '%)</b></td><td>S/ ' +
+          ((total * a) / 100).toFixed(2) +
+          ' al aceptar</td></tr><tr><td><b>Saldo</b></td><td>S/ ' +
+          (total - (total * a) / 100).toFixed(2) +
+          ' antes de la entrega</td></tr><tr><td><b>Vigencia</b></td><td>' +
+          v('qv') +
+          ' días</td></tr><tr><td><b>Ajustes extra</b></td><td>S/ 80 por ronda adicional</td></tr></table>'
+        descargaLocal(
+          'cotizacion.html',
+          docHTML('Cotización', body),
+          'text/html;charset=utf-8',
+        )
+        document.getElementById('dlMsg').textContent =
+          'Descarga iniciada: cotizacion.html (ábrelo en Word para editar).'
+      }
+      function validarCotizacion() {
+        for (const id of ['qn', 'qp', 'qa', 'qv']) {
+          const input = document.getElementById(id)
+          if (!input.reportValidity()) return false
+        }
+        if (
+          !document.getElementById('qc').value.trim() ||
+          !document.getElementById('qs').value.trim()
+        ) {
+          toast('Completa el cliente y el servicio antes de descargar.')
+          return false
+        }
+        return true
+      }
+      function resumen() {
+        if (!validarCotizacion()) return
+        const v = (id) => document.getElementById(id).value || ''
+        const cell = (x) =>
+          '"' +
+          String(x)
+            .replace(/"/g, '""')
+            .replace(/^\s*[=+@-]/, "'$&") +
+          '"'
+        const total = Number(v('qp')) || 0,
+          a = Number(v('qa')) || 0
+        descargaLocal(
+          'resumen_cotizacion.csv',
+          'Cliente,Servicio,Piezas,Precio total S/,Anticipo %,Anticipo S/,Saldo S/,Vigencia días\n' +
+            [
+              v('qc'),
+              v('qs'),
+              v('qn'),
+              total,
+              a,
+              ((total * a) / 100).toFixed(2),
+              (total - (total * a) / 100).toFixed(2),
+              v('qv'),
+            ]
+              .map(cell)
+              .join(',') +
+            '\n',
+          'text/csv;charset=utf-8',
+        )
+        document.getElementById('dlMsg').textContent =
+          'Descarga iniciada: resumen_cotizacion.csv.'
+      }
+
+      /* plantillas */
+      const TPL = [
+        {
+          name: 'Respuesta al primer mensaje',
+          desc: 'Para personalizar y enviar a una consulta nueva.',
+          file: 'respuesta_primer_mensaje.txt',
+          data: '¡Hola, [nombre]! Gracias por escribirme.\nPara evaluar tu proyecto de [servicio] necesito conocer el objetivo, las piezas, dónde se usarán y la fecha en que las necesitas ([fecha]).\nSi ya tienes referencias o una guía de marca, compártelas.\n\n[Tu nombre]\n',
+        },
+        {
+          name: 'Propuesta comercial',
+          desc: 'Estructura lista para enviar, con alcance, pagos y vigencia.',
+          file: 'propuesta_comercial.txt',
+          data: 'PROPUESTA COMERCIAL\n\nCliente:\nServicio:\nObjetivo:\nEntregables:\n-\nRevisiones incluidas: 2 rondas consolidadas\nHonorarios: S/\nPagos: 50% al aceptar, 50% antes de la entrega\nVigencia: 7 días desde la emisión\nAjustes extra: S/ 80 por ronda adicional\n',
+        },
+        {
+          name: 'Cláusula de cambios',
+          desc: 'Texto corto para la propuesta o el contrato.',
+          file: 'clausula_cambios.txt',
+          data: 'CLÁUSULA DE CAMBIOS\n\nEl precio incluye dos rondas de ajustes sobre la propuesta aprobada. Cada ronda comprende una lista consolidada de observaciones recibida por escrito. Los cambios que alteren el concepto aprobado o agreguen piezas se estimarán por separado y requerirán aceptación previa.\n',
+        },
+        {
+          name: 'Checklist de entrega',
+          desc: 'Revisión final antes de enviar los archivos.',
+          file: 'checklist_entrega.txt',
+          data: 'CHECKLIST DE ENTREGA\n\n[ ] Textos confirmados\n[ ] Dimensiones correctas\n[ ] Se ve bien en celular\n[ ] Nombres de archivo ordenados\n[ ] Licencias de imágenes y fuentes revisadas\n[ ] Aprobación escrita guardada\n[ ] Saldo cobrado y comprobante archivado\n',
+        },
+        {
+          name: 'Cronograma de proyecto',
+          desc: 'Tareas con responsable, fechas y dependencias.',
+          file: 'cronograma_proyecto.csv',
+          data: 'Tarea,Responsable,Inicio,Vencimiento,Estado,Dependencia\nInvestigación,Diseñador,,,Pendiente,Brief aprobado\nConcepto y producción,Diseñador,,,Pendiente,Investigación\nPresentación,Diseñador,,,Pendiente,Piezas listas\nAprobación,Cliente,,,Pendiente,Revisión\nEntrega y cobro,Diseñador,,,Pendiente,Aprobación escrita\n',
+        },
+        {
+          name: 'Registro de feedback',
+          desc: 'Hoja para registrar observaciones por pieza y ronda.',
+          file: 'registro_feedback.csv',
+          data: 'Fecha,Versión,Pieza,Solicitud,Tipo,Estado,Responsable,Ronda\n,v01,P03,,,Pendiente,,1/2\n',
+        },
+      ]
+      const box = document.getElementById('tpls')
+      TPL.forEach((t) => {
+        const d = document.createElement('div')
+        d.className = 'tpl'
+        d.innerHTML =
+          '<h3></h3><p></p><button class="btn" type="button">Descargar</button>'
+        d.querySelector('h3').textContent = t.name
+        d.querySelector('p').textContent = t.desc
+        d.querySelector('button').addEventListener('click', () => {
+          descargaLocal(
+            t.file,
+            t.data,
+            t.file.endsWith('.csv')
+              ? 'text/csv;charset=utf-8'
+              : 'text/plain;charset=utf-8',
+          )
+        })
+        box.appendChild(d)
+      })
+    </script>
+    <script src="/reader.js"></script>
+  </body>
+</html>
